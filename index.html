@@ -652,14 +652,15 @@
     riscv: {
       label: 'VLSI Design I · Sep – Dec 2025',
       title: '16-bit RISC-V Processor',
-      meta: ['Sep – Dec 2025', 'Team of 6', 'TSMC 65nm'],
+      meta: ['Sep – Dec 2025', 'Team of 5', 'TSMC 65nm'],
       chips: ['Cadence Virtuoso', 'Innovus', 'NCVerilog', 'TSMC 65nm', 'DRC/LVS', '8T-SRAM'],
-      overview: 'Collaborated in a team of 6 to design and tape out a custom 2-stage pipelined 16-bit RISC-V processor at the transistor level in TSMC 65nm. Responsible for key datapath components from schematic through full layout.',
+      overview: 'The 16-bit RISC-V Processor Design Project was the course project for EECS 427 (VLSI Design I) during my Junior Fall semester (FA25) at the University of Michigan and served as my undergraduate major design experience. Our five-member team designed and implemented a custom 16-bit pipelined RISC processor in TSMC 65 nm technology, incorporating a complete baseline instruction set architecture, datapath, control logic, arithmetic units, and memory interface circuitry. The project combined full-custom circuit design with RTL development, synthesis, and automated place-and-route using an industry-standard ASIC flow. Through extensive NCVerilog verification, custom testbench development, pre/post-layout SPICE simulations, and full DRC/LVS signoff, we validated complete processor functionality and successfully executed a Fibonacci benchmark program. The final design achieved a 162 μm × 200 μm core area and operated at a maximum clock frequency of 200 MHz. This project was my first hands-on experience in processor microarchitecture, VLSI implementation, and the integration of digital design from architecture to physical layout.',
       bullets: [
-        'Designed transistor-level schematic and layout for the 16-bit register file, ALU, logarithmic shifter, and instruction decoder',
-        'Implemented custom 16×16 8T-SRAM and program counter with automated place-and-route',
-        'Achieved DRC/LVS-clean layout with verified full functionality in NCVerilog',
-        'Optimized area-delay product across all assigned components',
+        'Served as a primary technical contributor across the full project lifecycle, helping drive architecture, implementation, and integration efforts within the team',
+        'Designed transistor-level schematics and hand-laid the 16-bit register file, ALU (ADD, AND, OR, and XOR), and logarithmic shifter',
+        'Developed RTL, performed synthesis, and completed automated place-and-route for the program counter unit with branch resolution logic and the instruction controller/decoder, enabling correct baseline ISA execution',
+        'Wrote custom NCVerilog testbenches for functional and corner-case validation',
+        'Performed pre-layout and post-layout SPICE simulations to verify timing and correctness with extracted parasitics',
       ],
       links: [
         { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
