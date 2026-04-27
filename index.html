@@ -6,207 +6,177 @@
   <title>Minjae Koo | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #fafaf8;
-      --surface: #f2f1ec;
-      --border: #e2e0d8;
-      --text: #1a1a18;
-      --muted: #6b6b65;
-      --faint: #9e9d96;
-      --accent: #1a1a18;
-      --tag-bg: #eeecea;
-      --tag-text: #5a5a54;
-      --link: #2a5ab8;
+      --bg: #0e0e10;
+      --surface: #18181c;
+      --surface2: #212126;
+      --border: #2e2e36;
+      --text: #f0f0ee;
+      --muted: #8a8a96;
+      --faint: #55555f;
+      --accent: #7c6af7;
+      --accent-dim: #3d3580;
+      --tag-bg: #1e1e26;
+      --tag-text: #9090a0;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 15px;
       line-height: 1.7;
       min-height: 100vh;
     }
 
-    a { color: var(--link); text-decoration: none; }
+    a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* Layout */
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
 
-    /* Nav */
     nav {
       border-bottom: 1px solid var(--border);
-      padding: 1.5rem 0;
+      padding: 1.25rem 0;
       position: sticky;
       top: 0;
       background: var(--bg);
-      z-index: 10;
+      z-index: 100;
     }
     nav .inner {
-      max-width: 720px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 2rem;
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
     }
     .nav-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px;
-      font-weight: 400;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
       color: var(--text);
       cursor: pointer;
-      text-decoration: none;
+      letter-spacing: 0.02em;
     }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .nav-links a { color: var(--muted); text-decoration: none; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 1.75rem; font-size: 13px; }
+    .nav-links a { color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
 
-    /* Pages */
     .page { display: none; }
     .page.active { display: block; }
 
-    /* Home */
     .hero {
-      padding: 4rem 0 3rem;
+      padding: 5rem 0 3.5rem;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
     }
-    .hero-label {
-      font-family: 'DM Mono', monospace;
+    .hero-mono {
+      font-family: 'Space Mono', monospace;
       font-size: 11px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
     .hero-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 42px;
-      font-weight: 400;
-      line-height: 1.15;
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1.1;
       margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
     }
-    .hero-sub {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.8;
-    }
+    .hero-sub { font-size: 16px; color: var(--muted); max-width: 520px; }
 
-    /* Section headers */
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 1.25rem;
-    }
-    .section { margin-bottom: 3.5rem; }
-
-    /* Project rows */
-    .project-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 1rem;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
-      cursor: pointer;
-      transition: background 0.15s;
-      margin: 0 -0.5rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      border-radius: 4px;
-    }
-    .project-row:last-child { border-bottom: 1px solid var(--border); }
-    .project-row:hover { background: var(--surface); }
-    .proj-title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 3px;
+    .section { margin-bottom: 4rem; }
+    .section-header {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
     }
-    .proj-title .arrow {
-      font-size: 12px;
-      color: var(--faint);
-      opacity: 0;
-      transition: opacity 0.15s, transform 0.15s;
+    .section-title { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
     }
-    .project-row:hover .arrow { opacity: 1; transform: translateX(2px); }
-    .proj-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 8px;
-      line-height: 1.5;
+    .proj-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
+    .proj-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+    .proj-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+    .proj-card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ph-icon {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ph-icon svg { width: 16px; height: 16px; stroke: var(--faint); fill: none; stroke-width: 1.5; }
+    .ph-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
+    .proj-card-body { padding: 14px 16px 16px; }
+    .proj-card-title { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+    .proj-card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
       padding: 2px 8px;
       background: var(--tag-bg);
       color: var(--tag-text);
-      border-radius: 3px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
     }
-    .proj-year {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--faint);
-      white-space: nowrap;
-      padding-top: 3px;
-    }
-
-    /* Experience rows */
-    .exp-row {
+    .proj-card-footer {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .proj-card-year { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
+    .proj-card-arrow { font-size: 14px; color: var(--accent); }
+
+    .exp-row {
+      display: grid;
+      grid-template-columns: 3px 1fr;
       gap: 1.25rem;
       padding: 1.25rem 0;
       border-top: 1px solid var(--border);
     }
     .exp-row:last-child { border-bottom: 1px solid var(--border); }
-    .exp-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--border);
-      margin-top: 8px;
-      flex-shrink: 0;
-    }
-    .exp-company { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
-    .exp-role { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
-    .exp-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--faint);
-    }
-    .exp-bullets {
-      margin-top: 8px;
-      padding-left: 1rem;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .exp-bullets li { margin-bottom: 4px; }
+    .exp-bar { background: var(--accent-dim); border-radius: 2px; }
+    .exp-company { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .exp-role { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+    .exp-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); margin-bottom: 10px; }
+    .exp-bullets { padding-left: 1rem; font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .exp-bullets li { margin-bottom: 3px; }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 0;
@@ -215,12 +185,14 @@
       align-items: center;
       font-size: 13px;
       color: var(--faint);
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
-    footer .footer-links { display: flex; gap: 1.5rem; }
-    footer a { color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--muted); }
 
-    /* ── Project Detail Page ── */
+    /* Detail page */
+    .detail-wrap { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
     .detail-back {
       display: inline-flex;
       align-items: center;
@@ -228,32 +200,32 @@
       font-size: 13px;
       color: var(--muted);
       cursor: pointer;
-      padding: 2.5rem 0 2rem;
+      padding: 2rem 0 2.5rem;
       background: none;
       border: none;
-      font-family: inherit;
-      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: color 0.15s;
     }
     .detail-back:hover { color: var(--text); }
 
-    .detail-header {
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
+    .detail-hero {
       margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
     }
-    .detail-label {
-      font-family: 'DM Mono', monospace;
+    .detail-mono {
+      font-family: 'Space Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--faint);
+      color: var(--accent);
       margin-bottom: 0.75rem;
     }
     .detail-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      font-weight: 400;
-      line-height: 1.2;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
       margin-bottom: 1rem;
     }
     .detail-meta {
@@ -262,15 +234,15 @@
       font-size: 13px;
       color: var(--muted);
       flex-wrap: wrap;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
-    .detail-meta span { display: flex; align-items: center; gap: 5px; }
-    .detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .detail-meta span::before { content: '·'; margin-right: 0.5rem; color: var(--faint); }
+    .detail-meta span:first-child::before { content: ''; margin-right: 0; }
 
     .detail-section { margin-bottom: 2.5rem; }
-    .detail-section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
+    .detail-section-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--faint);
@@ -278,217 +250,225 @@
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
-    .detail-overview {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .detail-bullets {
-      padding-left: 1.25rem;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .detail-overview { font-size: 15px; color: var(--muted); line-height: 1.8; }
+    .detail-bullets { padding-left: 1.25rem; font-size: 14px; color: var(--muted); line-height: 1.9; }
     .detail-bullets li { margin-bottom: 6px; }
 
-    /* Media placeholder */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 1rem;
-    }
-    .media-placeholder {
-      aspect-ratio: 16/9;
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+    .media-slot {
+      aspect-ratio: 16/10;
       background: var(--surface);
       border: 1px dashed var(--border);
-      border-radius: 6px;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: var(--faint);
-      font-size: 12px;
-      font-family: 'DM Mono', monospace;
-      cursor: pointer;
-      transition: background 0.15s;
     }
-    .media-placeholder:hover { background: var(--border); }
-    .media-placeholder .icon { font-size: 22px; }
-
-    .video-placeholder {
+    .media-slot svg { width: 20px; height: 20px; stroke: var(--faint); fill: none; stroke-width: 1.5; }
+    .media-slot span { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
+    .video-slot {
       aspect-ratio: 16/9;
       background: var(--surface);
       border: 1px dashed var(--border);
-      border-radius: 6px;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      color: var(--faint);
-      font-size: 12px;
-      font-family: 'DM Mono', monospace;
-      margin-bottom: 1rem;
+      gap: 10px;
+      margin-bottom: 12px;
     }
-    .video-placeholder .play {
-      width: 40px;
-      height: 40px;
+    .play-btn {
+      width: 44px; height: 44px;
       border-radius: 50%;
       border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--faint);
+      display: flex; align-items: center; justify-content: center;
     }
+    .play-btn svg { width: 16px; height: 16px; fill: var(--faint); margin-left: 3px; }
+    .video-slot span { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
 
-    /* Links section */
-    .link-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-    }
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
     .link-card {
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.875rem 1rem;
+      border-radius: 10px;
+      padding: 1rem 1.125rem;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
+      transition: border-color 0.15s, background 0.15s;
       text-decoration: none;
       color: inherit;
+      background: var(--surface);
     }
-    .link-card:hover { background: var(--surface); border-color: var(--muted); text-decoration: none; }
-    .link-card-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--faint);
+    .link-card:hover { border-color: var(--accent-dim); background: var(--surface2); text-decoration: none; }
+    .link-card-icon {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
     }
-    .link-card-title { font-size: 13px; font-weight: 500; }
+    .link-card-icon svg { width: 14px; height: 14px; stroke: var(--muted); fill: none; stroke-width: 1.5; }
+    .link-card-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; }
+    .link-card-title { font-size: 13px; font-weight: 500; color: var(--text); }
   </style>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <a class="nav-name" onclick="showHome()">Minjae Koo</a>
+    <span class="nav-name" onclick="showHome()">MINJAE KOO</span>
     <div class="nav-links">
-      <a href="#projects" onclick="showHome()">Projects</a>
-      <a href="#experience" onclick="showHome()">Experience</a>
+      <a href="#" onclick="showHome(); return false;">Projects</a>
+      <a href="#experience" onclick="showHome(); return false;">Experience</a>
       <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
       <a href="mailto:minjaek@umich.edu">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- ══════════════ HOME PAGE ══════════════ -->
+<!-- HOME PAGE -->
 <div id="page-home" class="page active">
   <div class="container">
     <div class="hero">
-      <div class="hero-label">Computer Engineering · University of Michigan</div>
+      <div class="hero-mono">Computer Engineering · University of Michigan</div>
       <h1 class="hero-title">VLSI Design &<br>Digital Systems</h1>
-      <p class="hero-sub">Third-year CE student specializing in chip design, digital circuits, and hardware engineering. GPA 3.83 · Dec 2027.</p>
+      <p class="hero-sub">Third-year CE student specializing in chip tapeout, digital circuits, and hardware engineering. GPA 3.83 · Dec 2027.</p>
     </div>
 
-    <section class="section" id="projects">
-      <div class="section-label">Projects</div>
-
-      <div class="project-row" onclick="showProject('cim')">
-        <div>
-          <div class="proj-title">VLSI Compute-In-Memory ASIC <span class="arrow">→</span></div>
-          <div class="proj-desc">End-to-end TSMC 65nm tapeout of an all-digital CIM chip as Team Captain. RTL design, synthesis, physical design, and signoff.</div>
-          <div class="tags">
-            <span class="tag">SystemVerilog</span><span class="tag">Cadence Innovus</span><span class="tag">TSMC 65nm</span><span class="tag">DFT</span>
-          </div>
-        </div>
-        <div class="proj-year">2026</div>
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Projects</span>
+        <div class="section-line"></div>
       </div>
+      <div class="card-grid">
 
-      <div class="project-row" onclick="showProject('riscv')">
-        <div>
-          <div class="proj-title">16-bit RISC-V Processor <span class="arrow">→</span></div>
-          <div class="proj-desc">Custom 2-stage pipelined processor with transistor-level schematic and layout. Register file, ALU, shifter, 8T-SRAM.</div>
-          <div class="tags">
-            <span class="tag">Cadence Virtuoso</span><span class="tag">TSMC 65nm</span><span class="tag">NCVerilog</span><span class="tag">DRC/LVS</span>
+        <div class="proj-card" onclick="showProject('cim')">
+          <!-- Replace the div below with: <img class="proj-card-img" src="images/cim.jpg" alt="CIM ASIC"> -->
+          <div class="proj-card-img-placeholder">
+            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <span class="ph-label">Add photo</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-title">VLSI Compute-In-Memory ASIC</div>
+            <div class="proj-card-desc">End-to-end TSMC 65nm chip tapeout as team captain — RTL through physical signoff.</div>
+            <div class="chips">
+              <span class="chip">SystemVerilog</span><span class="chip">Cadence Innovus</span><span class="chip">DFT</span>
+            </div>
+          </div>
+          <div class="proj-card-footer">
+            <span class="proj-card-year">Jan 2026 – Present</span>
+            <span class="proj-card-arrow">→</span>
           </div>
         </div>
-        <div class="proj-year">2025</div>
-      </div>
 
-      <div class="project-row" onclick="showProject('pipeline')">
-        <div>
-          <div class="proj-title">LC-2K Pipelined Processor Simulator <span class="arrow">→</span></div>
-          <div class="proj-desc">5-stage pipeline simulator in C with data forwarding, stalling, and branch prediction. Includes LC-2K assembler.</div>
-          <div class="tags">
-            <span class="tag">C</span><span class="tag">Pipeline</span><span class="tag">Computer Architecture</span>
+        <div class="proj-card" onclick="showProject('riscv')">
+          <div class="proj-card-img-placeholder">
+            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <span class="ph-label">Add photo</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-title">16-bit RISC-V Processor</div>
+            <div class="proj-card-desc">2-stage pipelined processor with transistor-level layout and custom 8T-SRAM.</div>
+            <div class="chips">
+              <span class="chip">Cadence Virtuoso</span><span class="chip">TSMC 65nm</span><span class="chip">DRC/LVS</span>
+            </div>
+          </div>
+          <div class="proj-card-footer">
+            <span class="proj-card-year">Sep – Dec 2025</span>
+            <span class="proj-card-arrow">→</span>
           </div>
         </div>
-        <div class="proj-year">2025</div>
-      </div>
 
-      <div class="project-row" onclick="showProject('calc')">
-        <div>
-          <div class="proj-title">Verilog Sequential Calculator <span class="arrow">→</span></div>
-          <div class="proj-desc">RTL-based calculator with ripple-carry adder and Booth's multiplication. Verified on Altera DE2-115 FPGA.</div>
-          <div class="tags">
-            <span class="tag">Verilog</span><span class="tag">ModelSim</span><span class="tag">Quartus Prime</span><span class="tag">FPGA</span>
+        <div class="proj-card" onclick="showProject('pipeline')">
+          <div class="proj-card-img-placeholder">
+            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <span class="ph-label">Add photo</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-title">LC-2K Pipelined Processor Simulator</div>
+            <div class="proj-card-desc">5-stage pipeline in C with forwarding, stalling, and branch prediction.</div>
+            <div class="chips">
+              <span class="chip">C</span><span class="chip">Pipeline</span><span class="chip">Arch</span>
+            </div>
+          </div>
+          <div class="proj-card-footer">
+            <span class="proj-card-year">Oct – Nov 2025</span>
+            <span class="proj-card-arrow">→</span>
           </div>
         </div>
-        <div class="proj-year">2025</div>
+
+        <div class="proj-card" onclick="showProject('calc')">
+          <div class="proj-card-img-placeholder">
+            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <span class="ph-label">Add photo</span>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-card-title">Verilog Sequential Calculator</div>
+            <div class="proj-card-desc">RTL calculator with Booth's multiplication, verified on Altera DE2-115 FPGA.</div>
+            <div class="chips">
+              <span class="chip">Verilog</span><span class="chip">ModelSim</span><span class="chip">FPGA</span>
+            </div>
+          </div>
+          <div class="proj-card-footer">
+            <span class="proj-card-year">Jan – Feb 2025</span>
+            <span class="proj-card-arrow">→</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section class="section" id="experience">
-      <div class="section-label">Experience</div>
+      <div class="section-header">
+        <span class="section-title">Experience</span>
+        <div class="section-line"></div>
+      </div>
 
       <div class="exp-row">
-        <div class="exp-dot"></div>
+        <div class="exp-bar"></div>
         <div>
           <div class="exp-company">LG Energy Solution</div>
           <div class="exp-role">Cell Equipment Technology Team Intern</div>
           <div class="exp-date">May 2025 – Aug 2025 · Holland, MI</div>
           <ul class="exp-bullets">
-            <li>Designed an HMI-based PET film roll reuse tracking system in MELSOFT GT Works3 with QR + MES integration, reducing downtime by 7 hrs/month</li>
+            <li>Designed HMI-based PET film roll reuse tracking system in MELSOFT GT Works3 with QR + MES integration — reduced downtime by 7 hrs/month</li>
             <li>Modified motor cover in SolidWorks, reducing operator PM time by ~70%</li>
           </ul>
         </div>
       </div>
 
       <div class="exp-row">
-        <div class="exp-dot"></div>
+        <div class="exp-bar"></div>
         <div>
           <div class="exp-company">Supermileage Project Team</div>
           <div class="exp-role">Power Electronics Subteam Member</div>
           <div class="exp-date">Oct 2023 – Dec 2024 · Ann Arbor, MI</div>
           <ul class="exp-bullets">
-            <li>Designed a 2-layer PCB relay driver board with MOSFET low-side switching, verified through thermal checks and oscilloscope measurements</li>
+            <li>Designed 2-layer PCB relay driver board with MOSFET low-side switching; verified with oscilloscope and thermal checks</li>
             <li>Mentored ~10 new members in soldering, oscilloscope use, and Altium workflow</li>
           </ul>
         </div>
       </div>
 
       <div class="exp-row">
-        <div class="exp-dot"></div>
+        <div class="exp-bar"></div>
         <div>
           <div class="exp-company">JR Automation</div>
           <div class="exp-role">Engineering Consulting Intern</div>
           <div class="exp-date">May 2023 – Aug 2023 · Holland, MI</div>
           <ul class="exp-bullets">
-            <li>Built a Power BI dashboard integrating HR data and benchmarks to identify attrition risks</li>
-            <li>Automated HR survey analysis with Excel macros and Python (pandas)</li>
+            <li>Built Power BI dashboard integrating HR data and benchmarks to identify attrition risks</li>
+            <li>Automated HR survey analysis using Excel macros and Python (pandas)</li>
           </ul>
         </div>
       </div>
 
       <div class="exp-row">
-        <div class="exp-dot"></div>
+        <div class="exp-bar"></div>
         <div>
           <div class="exp-company">University of Michigan — EECS 215</div>
           <div class="exp-role">Course Grader</div>
@@ -508,133 +488,134 @@
   </div>
 </div>
 
-<!-- ══════════════ PROJECT DETAIL PAGES ══════════════ -->
+<!-- DETAIL PAGE -->
 <div id="page-project" class="page">
-  <div class="container">
-    <button class="detail-back" onclick="showHome()">← Back to projects</button>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <div class="detail-header">
-      <div class="detail-label" id="d-label"></div>
+    <div class="detail-hero">
+      <div class="detail-mono" id="d-label"></div>
       <h2 class="detail-title" id="d-title"></h2>
       <div class="detail-meta" id="d-meta"></div>
-      <div class="detail-tags" id="d-tags"></div>
+      <div class="chips" id="d-chips"></div>
     </div>
 
     <div class="detail-section">
-      <div class="detail-section-label">Overview</div>
-      <div class="detail-overview" id="d-overview"></div>
+      <div class="detail-section-title">Overview</div>
+      <p class="detail-overview" id="d-overview"></p>
     </div>
 
     <div class="detail-section">
-      <div class="detail-section-label">Key contributions</div>
+      <div class="detail-section-title">Key contributions</div>
       <ul class="detail-bullets" id="d-bullets"></ul>
     </div>
 
     <div class="detail-section">
-      <div class="detail-section-label">Demo / media</div>
-      <div class="video-placeholder">
-        <div class="play">▶</div>
-        <span>Video placeholder — add your demo here</span>
+      <div class="detail-section-title">Media</div>
+      <!-- VIDEO: Replace this div with <iframe> or <video> when you have footage -->
+      <div class="video-slot">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+        <span>Replace with &lt;video src="..."&gt; or a YouTube &lt;iframe&gt;</span>
       </div>
+      <!-- IMAGES: Replace each media-slot with <img src="images/project/photo.jpg"> -->
       <div class="media-grid">
-        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
-        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
-        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
+        <div class="media-slot">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add image</span>
+        </div>
+        <div class="media-slot">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add image</span>
+        </div>
+        <div class="media-slot">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add image</span>
+        </div>
       </div>
     </div>
 
     <div class="detail-section">
-      <div class="detail-section-label">Links & documents</div>
+      <div class="detail-section-title">Links & documents</div>
       <div class="link-grid" id="d-links"></div>
     </div>
   </div>
 </div>
 
 <script>
-  const projects = {
+  const ICON = {
+    github: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
+    doc: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+    slides: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+  };
+
+  const PROJECTS = {
     cim: {
       label: 'VLSI · Chip Tapeout Lab · 2026',
       title: 'VLSI Compute-In-Memory ASIC',
-      meta: [
-        { icon: '📅', text: 'Jan 2026 – Present' },
-        { icon: '👥', text: 'Team Captain, 5 members' },
-        { icon: '🏭', text: 'TSMC 65nm' },
-      ],
-      tags: ['SystemVerilog', 'Cadence Innovus', 'Synopsys Design Compiler', 'Verdi', 'DFT', 'Scan Chain', 'TSMC 65nm'],
-      overview: 'Led end-to-end tapeout of an all-digital Compute-In-Memory ASIC in TSMC 65nm as Team Captain. Took ownership of the full flow from RTL design and verification through synthesis, physical design, top-level integration, and physical signoff.',
+      meta: ['Jan 2026 – Present', 'Team Captain · 5 members', 'TSMC 65nm'],
+      chips: ['SystemVerilog', 'Cadence Innovus', 'Synopsys DC', 'Verdi', 'Scan Chain DFT', 'TSMC 65nm'],
+      overview: 'Led end-to-end tapeout of an all-digital Compute-In-Memory ASIC in TSMC 65nm as Team Captain. Responsible for the complete flow from RTL design and verification through synthesis, physical design, top-level integration, and physical signoff.',
       bullets: [
-        'Directed complete frontend and backend flow for a CIM architecture, including RTL design, synthesis, and physical design',
-        'Led a mid-project architecture pivot from a hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without delaying tapeout',
-        'Developed full DFT infrastructure with scan-chain insertion and automated synthesis TCL scripts',
-        'Verified logic using Synopsys Verdi; achieved physical signoff with DRC/LVS-clean layout',
+        'Directed the full RTL-to-GDSII flow for a CIM architecture, owning design, synthesis, and physical implementation',
+        'Led a mid-project architecture pivot from hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without schedule impact',
+        'Developed complete DFT infrastructure with scan-chain insertion and automated synthesis TCL scripts',
+        'Verified logic correctness in Synopsys Verdi; achieved physical signoff with DRC/LVS-clean layout',
       ],
       links: [
-        { label: 'GitHub', title: 'Source repo', href: '#' },
-        { label: 'Report', title: 'Project report (PDF)', href: '#' },
-        { label: 'Slides', title: 'Tapeout slides', href: '#' },
+        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
+        { icon: 'doc', label: 'Report', title: 'Tapeout report (PDF)', href: '#' },
+        { icon: 'slides', label: 'Slides', title: 'Design review slides', href: '#' },
       ],
     },
     riscv: {
       label: 'VLSI Design I · Sep – Dec 2025',
       title: '16-bit RISC-V Processor',
-      meta: [
-        { icon: '📅', text: 'Sep – Dec 2025' },
-        { icon: '👥', text: 'Team of 6' },
-        { icon: '🏭', text: 'TSMC 65nm' },
-      ],
-      tags: ['Cadence Virtuoso', 'Innovus', 'NCVerilog', 'TSMC 65nm', 'DRC/LVS', '8T-SRAM'],
-      overview: 'Collaborated in a team of 6 to design and tape out a custom 2-stage pipelined 16-bit RISC-V processor at the transistor level. Responsible for core components from schematic through layout.',
+      meta: ['Sep – Dec 2025', 'Team of 6', 'TSMC 65nm'],
+      chips: ['Cadence Virtuoso', 'Innovus', 'NCVerilog', 'TSMC 65nm', 'DRC/LVS', '8T-SRAM'],
+      overview: 'Collaborated in a team of 6 to design and tape out a custom 2-stage pipelined 16-bit RISC-V processor at the transistor level in TSMC 65nm. Responsible for key datapath components from schematic through full layout.',
       bullets: [
         'Designed transistor-level schematic and layout for the 16-bit register file, ALU, logarithmic shifter, and instruction decoder',
-        'Implemented custom 16×16 8T-SRAM and program counter with APR',
-        'Verified full functionality in NCVerilog; achieved DRC/LVS-clean layout',
-        'Optimized area-delay product across components',
+        'Implemented custom 16×16 8T-SRAM and program counter with automated place-and-route',
+        'Achieved DRC/LVS-clean layout with verified full functionality in NCVerilog',
+        'Optimized area-delay product across all assigned components',
       ],
       links: [
-        { label: 'GitHub', title: 'Source repo', href: '#' },
-        { label: 'Report', title: 'Design report (PDF)', href: '#' },
+        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
+        { icon: 'doc', label: 'Report', title: 'Design report (PDF)', href: '#' },
       ],
     },
     pipeline: {
       label: 'Computer Architecture · Oct – Nov 2025',
       title: 'LC-2K Pipelined Processor Simulator',
-      meta: [
-        { icon: '📅', text: 'Oct – Nov 2025' },
-        { icon: '🛠', text: 'Solo project' },
-        { icon: '💻', text: 'C' },
-      ],
-      tags: ['C', 'Pipeline', 'Data Forwarding', 'Branch Prediction', 'Computer Architecture'],
-      overview: 'Implemented a complete LC-2K assembler and 5-stage pipeline simulator in C, modeling clocked pipeline behavior with hazard handling, data forwarding, and branch prediction.',
+      meta: ['Oct – Nov 2025', 'Solo project', 'C'],
+      chips: ['C', 'Pipeline', 'Data Forwarding', 'Branch Prediction', 'Assembler'],
+      overview: 'Implemented a complete LC-2K assembler and 5-stage pipeline simulator in C. Models clocked pipeline behavior with full hazard handling, data forwarding, stall insertion, and branch prediction.',
       bullets: [
-        'Built an assembler to translate LC-2K assembly (.as) programs into machine code (.mc)',
-        'Implemented a 5-stage pipeline simulator with data forwarding, stall insertion, and branch prediction',
-        'Modeled full pipeline state transitions using state and newstate structs to simulate clocked behavior',
-        'Tested against provided and self-written assembly programs to verify correctness',
+        'Built an assembler to translate LC-2K assembly (.as) to machine code (.mc) for simulation input',
+        'Implemented 5-stage pipeline with data forwarding, stall insertion, and branch prediction logic',
+        'Modeled full pipeline state using state/newstate structs to simulate clocked register behavior',
+        'Validated against a suite of test programs covering all hazard detection edge cases',
       ],
       links: [
-        { label: 'GitHub', title: 'Source repo', href: '#' },
-        { label: 'Report', title: 'Write-up (PDF)', href: '#' },
+        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
+        { icon: 'doc', label: 'Write-up', title: 'Project write-up (PDF)', href: '#' },
       ],
     },
     calc: {
       label: 'Logic Design · Jan – Feb 2025',
       title: 'Verilog Sequential Calculator',
-      meta: [
-        { icon: '📅', text: 'Jan – Feb 2025' },
-        { icon: '🛠', text: 'Solo project' },
-        { icon: '💻', text: 'Verilog · FPGA' },
-      ],
-      tags: ['Verilog', 'ModelSim', 'Quartus Prime', 'FPGA', 'Booth\'s Algorithm', 'RTL'],
-      overview: "Designed an RTL-based sequential calculator in Verilog supporting addition, subtraction, multiplication, and division with built-in error handling. Verified in simulation and on physical hardware.",
+      meta: ['Jan – Feb 2025', 'Solo project', 'Verilog · FPGA'],
+      chips: ['Verilog', 'ModelSim', 'Quartus Prime', 'Altera DE2-115', "Booth's Algorithm", 'RTL'],
+      overview: "Designed an RTL-based sequential calculator in Verilog supporting addition, subtraction, multiplication, and division with built-in error handling. Verified in ModelSim simulation and on physical FPGA hardware.",
       bullets: [
-        "Implemented a ripple-carry adder and Booth's multiplication algorithm in RTL Verilog",
-        'Added built-in error handling for edge cases (e.g., division by zero)',
-        'Verified functionality through ModelSim testbench simulations',
-        'Deployed and tested on Altera DE2-115 FPGA board',
+        "Implemented a ripple-carry adder and Booth's multiplication algorithm at the RTL level",
+        'Added robust error handling for edge cases including division by zero',
+        'Verified full functionality through ModelSim testbench simulations',
+        'Deployed and tested on Altera DE2-115 FPGA development board',
       ],
       links: [
-        { label: 'GitHub', title: 'Source repo', href: '#' },
-        { label: 'Report', title: 'Lab report (PDF)', href: '#' },
+        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
+        { icon: 'doc', label: 'Report', title: 'Lab report (PDF)', href: '#' },
       ],
     },
   };
@@ -646,23 +627,20 @@
   }
 
   function showProject(id) {
-    const p = projects[id];
+    const p = PROJECTS[id];
     document.getElementById('d-label').textContent = p.label;
     document.getElementById('d-title').textContent = p.title;
+    document.getElementById('d-meta').innerHTML = p.meta.map(m => `<span>${m}</span>`).join('');
+    document.getElementById('d-chips').innerHTML = p.chips.map(c => `<span class="chip">${c}</span>`).join('');
     document.getElementById('d-overview').textContent = p.overview;
-
-    document.getElementById('d-meta').innerHTML = p.meta
-      .map(m => `<span>${m.icon} ${m.text}</span>`).join('');
-
-    document.getElementById('d-tags').innerHTML = p.tags
-      .map(t => `<span class="tag">${t}</span>`).join('');
-
-    document.getElementById('d-bullets').innerHTML = p.bullets
-      .map(b => `<li>${b}</li>`).join('');
-
-    document.getElementById('d-links').innerHTML = p.links
-      .map(l => `<a class="link-card" href="${l.href}"><span class="link-card-label">${l.label}</span><span class="link-card-title">${l.title}</span></a>`).join('');
-
+    document.getElementById('d-bullets').innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
+    document.getElementById('d-links').innerHTML = p.links.map(l =>
+      `<a class="link-card" href="${l.href}">
+        <div class="link-card-icon">${ICON[l.icon]}</div>
+        <span class="link-card-label">${l.label}</span>
+        <span class="link-card-title">${l.title}</span>
+      </a>`
+    ).join('');
     document.getElementById('page-home').classList.remove('active');
     document.getElementById('page-project').classList.add('active');
     window.scrollTo(0, 0);
