@@ -1,16 +1,672 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Name | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minjae Koo | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafaf8;
+      --surface: #f2f1ec;
+      --border: #e2e0d8;
+      --text: #1a1a18;
+      --muted: #6b6b65;
+      --faint: #9e9d96;
+      --accent: #1a1a18;
+      --tag-bg: #eeecea;
+      --tag-text: #5a5a54;
+      --link: #2a5ab8;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Nav */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    nav .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Pages */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Home */
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    /* Section headers */
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 1.25rem;
+    }
+    .section { margin-bottom: 3.5rem; }
+
+    /* Project rows */
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+      margin: 0 -0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      border-radius: 4px;
+    }
+    .project-row:last-child { border-bottom: 1px solid var(--border); }
+    .project-row:hover { background: var(--surface); }
+    .proj-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .proj-title .arrow {
+      font-size: 12px;
+      color: var(--faint);
+      opacity: 0;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .project-row:hover .arrow { opacity: 1; transform: translateX(2px); }
+    .proj-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 2px 8px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 3px;
+    }
+    .proj-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--faint);
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+
+    /* Experience rows */
+    .exp-row {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .exp-row:last-child { border-bottom: 1px solid var(--border); }
+    .exp-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+    .exp-company { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+    .exp-role { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+    .exp-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--faint);
+    }
+    .exp-bullets {
+      margin-top: 8px;
+      padding-left: 1rem;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .exp-bullets li { margin-bottom: 4px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--faint);
+      margin-top: 2rem;
+    }
+    footer .footer-links { display: flex; gap: 1.5rem; }
+    footer a { color: var(--muted); }
+
+    /* ── Project Detail Page ── */
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 2.5rem 0 2rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-decoration: none;
+    }
+    .detail-back:hover { color: var(--text); }
+
+    .detail-header {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .detail-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 0.75rem;
+    }
+    .detail-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .detail-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 13px;
+      color: var(--muted);
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .detail-meta span { display: flex; align-items: center; gap: 5px; }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .detail-section { margin-bottom: 2.5rem; }
+    .detail-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-overview {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .detail-bullets {
+      padding-left: 1.25rem;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .detail-bullets li { margin-bottom: 6px; }
+
+    /* Media placeholder */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+    .media-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--faint);
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .media-placeholder:hover { background: var(--border); }
+    .media-placeholder .icon { font-size: 22px; }
+
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--faint);
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 1rem;
+    }
+    .video-placeholder .play {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--faint);
+    }
+
+    /* Links section */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .link-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.875rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-card:hover { background: var(--surface); border-color: var(--muted); text-decoration: none; }
+    .link-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .link-card-title { font-size: 13px; font-weight: 500; }
+  </style>
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p>Welcome to my project portfolio.</p>
 
-  <h2>Projects</h2>
-  <ul>
-    <li><a href="https://github.com/yourusername/project1">Project 1</a></li>
-    <li><a href="https://github.com/yourusername/project2">Project 2</a></li>
-  </ul>
+<nav>
+  <div class="inner">
+    <a class="nav-name" onclick="showHome()">Minjae Koo</a>
+    <div class="nav-links">
+      <a href="#projects" onclick="showHome()">Projects</a>
+      <a href="#experience" onclick="showHome()">Experience</a>
+      <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+      <a href="mailto:minjaek@umich.edu">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div id="page-home" class="page active">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Computer Engineering · University of Michigan</div>
+      <h1 class="hero-title">VLSI Design &<br>Digital Systems</h1>
+      <p class="hero-sub">Third-year CE student specializing in chip design, digital circuits, and hardware engineering. GPA 3.83 · Dec 2027.</p>
+    </div>
+
+    <section class="section" id="projects">
+      <div class="section-label">Projects</div>
+
+      <div class="project-row" onclick="showProject('cim')">
+        <div>
+          <div class="proj-title">VLSI Compute-In-Memory ASIC <span class="arrow">→</span></div>
+          <div class="proj-desc">End-to-end TSMC 65nm tapeout of an all-digital CIM chip as Team Captain. RTL design, synthesis, physical design, and signoff.</div>
+          <div class="tags">
+            <span class="tag">SystemVerilog</span><span class="tag">Cadence Innovus</span><span class="tag">TSMC 65nm</span><span class="tag">DFT</span>
+          </div>
+        </div>
+        <div class="proj-year">2026</div>
+      </div>
+
+      <div class="project-row" onclick="showProject('riscv')">
+        <div>
+          <div class="proj-title">16-bit RISC-V Processor <span class="arrow">→</span></div>
+          <div class="proj-desc">Custom 2-stage pipelined processor with transistor-level schematic and layout. Register file, ALU, shifter, 8T-SRAM.</div>
+          <div class="tags">
+            <span class="tag">Cadence Virtuoso</span><span class="tag">TSMC 65nm</span><span class="tag">NCVerilog</span><span class="tag">DRC/LVS</span>
+          </div>
+        </div>
+        <div class="proj-year">2025</div>
+      </div>
+
+      <div class="project-row" onclick="showProject('pipeline')">
+        <div>
+          <div class="proj-title">LC-2K Pipelined Processor Simulator <span class="arrow">→</span></div>
+          <div class="proj-desc">5-stage pipeline simulator in C with data forwarding, stalling, and branch prediction. Includes LC-2K assembler.</div>
+          <div class="tags">
+            <span class="tag">C</span><span class="tag">Pipeline</span><span class="tag">Computer Architecture</span>
+          </div>
+        </div>
+        <div class="proj-year">2025</div>
+      </div>
+
+      <div class="project-row" onclick="showProject('calc')">
+        <div>
+          <div class="proj-title">Verilog Sequential Calculator <span class="arrow">→</span></div>
+          <div class="proj-desc">RTL-based calculator with ripple-carry adder and Booth's multiplication. Verified on Altera DE2-115 FPGA.</div>
+          <div class="tags">
+            <span class="tag">Verilog</span><span class="tag">ModelSim</span><span class="tag">Quartus Prime</span><span class="tag">FPGA</span>
+          </div>
+        </div>
+        <div class="proj-year">2025</div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-label">Experience</div>
+
+      <div class="exp-row">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-company">LG Energy Solution</div>
+          <div class="exp-role">Cell Equipment Technology Team Intern</div>
+          <div class="exp-date">May 2025 – Aug 2025 · Holland, MI</div>
+          <ul class="exp-bullets">
+            <li>Designed an HMI-based PET film roll reuse tracking system in MELSOFT GT Works3 with QR + MES integration, reducing downtime by 7 hrs/month</li>
+            <li>Modified motor cover in SolidWorks, reducing operator PM time by ~70%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-company">Supermileage Project Team</div>
+          <div class="exp-role">Power Electronics Subteam Member</div>
+          <div class="exp-date">Oct 2023 – Dec 2024 · Ann Arbor, MI</div>
+          <ul class="exp-bullets">
+            <li>Designed a 2-layer PCB relay driver board with MOSFET low-side switching, verified through thermal checks and oscilloscope measurements</li>
+            <li>Mentored ~10 new members in soldering, oscilloscope use, and Altium workflow</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-company">JR Automation</div>
+          <div class="exp-role">Engineering Consulting Intern</div>
+          <div class="exp-date">May 2023 – Aug 2023 · Holland, MI</div>
+          <ul class="exp-bullets">
+            <li>Built a Power BI dashboard integrating HR data and benchmarks to identify attrition risks</li>
+            <li>Automated HR survey analysis with Excel macros and Python (pandas)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-dot"></div>
+        <div>
+          <div class="exp-company">University of Michigan — EECS 215</div>
+          <div class="exp-role">Course Grader</div>
+          <div class="exp-date">2024 – Present · Ann Arbor, MI</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>minjae-koo.github.io</span>
+      <div class="footer-links">
+        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+        <a href="mailto:minjaek@umich.edu">Email</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ══════════════ PROJECT DETAIL PAGES ══════════════ -->
+<div id="page-project" class="page">
+  <div class="container">
+    <button class="detail-back" onclick="showHome()">← Back to projects</button>
+
+    <div class="detail-header">
+      <div class="detail-label" id="d-label"></div>
+      <h2 class="detail-title" id="d-title"></h2>
+      <div class="detail-meta" id="d-meta"></div>
+      <div class="detail-tags" id="d-tags"></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-label">Overview</div>
+      <div class="detail-overview" id="d-overview"></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-label">Key contributions</div>
+      <ul class="detail-bullets" id="d-bullets"></ul>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-label">Demo / media</div>
+      <div class="video-placeholder">
+        <div class="play">▶</div>
+        <span>Video placeholder — add your demo here</span>
+      </div>
+      <div class="media-grid">
+        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
+        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
+        <div class="media-placeholder"><span class="icon">🖼</span><span>Image placeholder</span></div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-label">Links & documents</div>
+      <div class="link-grid" id="d-links"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const projects = {
+    cim: {
+      label: 'VLSI · Chip Tapeout Lab · 2026',
+      title: 'VLSI Compute-In-Memory ASIC',
+      meta: [
+        { icon: '📅', text: 'Jan 2026 – Present' },
+        { icon: '👥', text: 'Team Captain, 5 members' },
+        { icon: '🏭', text: 'TSMC 65nm' },
+      ],
+      tags: ['SystemVerilog', 'Cadence Innovus', 'Synopsys Design Compiler', 'Verdi', 'DFT', 'Scan Chain', 'TSMC 65nm'],
+      overview: 'Led end-to-end tapeout of an all-digital Compute-In-Memory ASIC in TSMC 65nm as Team Captain. Took ownership of the full flow from RTL design and verification through synthesis, physical design, top-level integration, and physical signoff.',
+      bullets: [
+        'Directed complete frontend and backend flow for a CIM architecture, including RTL design, synthesis, and physical design',
+        'Led a mid-project architecture pivot from a hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without delaying tapeout',
+        'Developed full DFT infrastructure with scan-chain insertion and automated synthesis TCL scripts',
+        'Verified logic using Synopsys Verdi; achieved physical signoff with DRC/LVS-clean layout',
+      ],
+      links: [
+        { label: 'GitHub', title: 'Source repo', href: '#' },
+        { label: 'Report', title: 'Project report (PDF)', href: '#' },
+        { label: 'Slides', title: 'Tapeout slides', href: '#' },
+      ],
+    },
+    riscv: {
+      label: 'VLSI Design I · Sep – Dec 2025',
+      title: '16-bit RISC-V Processor',
+      meta: [
+        { icon: '📅', text: 'Sep – Dec 2025' },
+        { icon: '👥', text: 'Team of 6' },
+        { icon: '🏭', text: 'TSMC 65nm' },
+      ],
+      tags: ['Cadence Virtuoso', 'Innovus', 'NCVerilog', 'TSMC 65nm', 'DRC/LVS', '8T-SRAM'],
+      overview: 'Collaborated in a team of 6 to design and tape out a custom 2-stage pipelined 16-bit RISC-V processor at the transistor level. Responsible for core components from schematic through layout.',
+      bullets: [
+        'Designed transistor-level schematic and layout for the 16-bit register file, ALU, logarithmic shifter, and instruction decoder',
+        'Implemented custom 16×16 8T-SRAM and program counter with APR',
+        'Verified full functionality in NCVerilog; achieved DRC/LVS-clean layout',
+        'Optimized area-delay product across components',
+      ],
+      links: [
+        { label: 'GitHub', title: 'Source repo', href: '#' },
+        { label: 'Report', title: 'Design report (PDF)', href: '#' },
+      ],
+    },
+    pipeline: {
+      label: 'Computer Architecture · Oct – Nov 2025',
+      title: 'LC-2K Pipelined Processor Simulator',
+      meta: [
+        { icon: '📅', text: 'Oct – Nov 2025' },
+        { icon: '🛠', text: 'Solo project' },
+        { icon: '💻', text: 'C' },
+      ],
+      tags: ['C', 'Pipeline', 'Data Forwarding', 'Branch Prediction', 'Computer Architecture'],
+      overview: 'Implemented a complete LC-2K assembler and 5-stage pipeline simulator in C, modeling clocked pipeline behavior with hazard handling, data forwarding, and branch prediction.',
+      bullets: [
+        'Built an assembler to translate LC-2K assembly (.as) programs into machine code (.mc)',
+        'Implemented a 5-stage pipeline simulator with data forwarding, stall insertion, and branch prediction',
+        'Modeled full pipeline state transitions using state and newstate structs to simulate clocked behavior',
+        'Tested against provided and self-written assembly programs to verify correctness',
+      ],
+      links: [
+        { label: 'GitHub', title: 'Source repo', href: '#' },
+        { label: 'Report', title: 'Write-up (PDF)', href: '#' },
+      ],
+    },
+    calc: {
+      label: 'Logic Design · Jan – Feb 2025',
+      title: 'Verilog Sequential Calculator',
+      meta: [
+        { icon: '📅', text: 'Jan – Feb 2025' },
+        { icon: '🛠', text: 'Solo project' },
+        { icon: '💻', text: 'Verilog · FPGA' },
+      ],
+      tags: ['Verilog', 'ModelSim', 'Quartus Prime', 'FPGA', 'Booth\'s Algorithm', 'RTL'],
+      overview: "Designed an RTL-based sequential calculator in Verilog supporting addition, subtraction, multiplication, and division with built-in error handling. Verified in simulation and on physical hardware.",
+      bullets: [
+        "Implemented a ripple-carry adder and Booth's multiplication algorithm in RTL Verilog",
+        'Added built-in error handling for edge cases (e.g., division by zero)',
+        'Verified functionality through ModelSim testbench simulations',
+        'Deployed and tested on Altera DE2-115 FPGA board',
+      ],
+      links: [
+        { label: 'GitHub', title: 'Source repo', href: '#' },
+        { label: 'Report', title: 'Lab report (PDF)', href: '#' },
+      ],
+    },
+  };
+
+  function showHome() {
+    document.getElementById('page-home').classList.add('active');
+    document.getElementById('page-project').classList.remove('active');
+    window.scrollTo(0, 0);
+  }
+
+  function showProject(id) {
+    const p = projects[id];
+    document.getElementById('d-label').textContent = p.label;
+    document.getElementById('d-title').textContent = p.title;
+    document.getElementById('d-overview').textContent = p.overview;
+
+    document.getElementById('d-meta').innerHTML = p.meta
+      .map(m => `<span>${m.icon} ${m.text}</span>`).join('');
+
+    document.getElementById('d-tags').innerHTML = p.tags
+      .map(t => `<span class="tag">${t}</span>`).join('');
+
+    document.getElementById('d-bullets').innerHTML = p.bullets
+      .map(b => `<li>${b}</li>`).join('');
+
+    document.getElementById('d-links').innerHTML = p.links
+      .map(l => `<a class="link-card" href="${l.href}"><span class="link-card-label">${l.label}</span><span class="link-card-title">${l.title}</span></a>`).join('');
+
+    document.getElementById('page-home').classList.remove('active');
+    document.getElementById('page-project').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
 </body>
 </html>
