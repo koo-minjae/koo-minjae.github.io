@@ -6,540 +6,616 @@
   <title>Minjae Koo | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0e0e10;
-      --surface: #18181c;
-      --surface2: #212126;
-      --border: #2e2e36;
-      --text: #f0f0ee;
-      --muted: #8a8a96;
-      --faint: #55555f;
-      --accent: #7c6af7;
-      --accent-dim: #3d3580;
-      --tag-bg: #1e1e26;
-      --tag-text: #9090a0;
+      --maize: #FFCB05;
+      --blue: #00274C;
+      --blue-mid: #1a4a7a;
+      --blue-light: #e8f0f8;
+      --bg: #ffffff;
+      --surface: #f8f8f6;
+      --border: #e8e8e4;
+      --text: #1a1a18;
+      --muted: #6b6b66;
+      --faint: #a8a8a2;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.7;
-      min-height: 100vh;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-
+    /* ── NAV ── */
     nav {
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 0;
-      position: sticky;
-      top: 0;
+      position: sticky; top: 0; z-index: 100;
       background: var(--bg);
-      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
     }
-    nav .inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 60px;
     }
-    .nav-name {
-      font-family: 'Space Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      cursor: pointer;
-      letter-spacing: 0.02em;
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; color: var(--blue);
+      cursor: pointer; text-decoration: none;
     }
-    .nav-links { display: flex; gap: 1.75rem; font-size: 13px; }
-    .nav-links a { color: var(--muted); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--blue); }
 
+    /* ── PAGE ROUTING ── */
     .page { display: none; }
     .page.active { display: block; }
 
-    .hero {
-      padding: 5rem 0 3.5rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 3.5rem;
-    }
-    .hero-mono {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .hero-title {
-      font-size: 52px;
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-    .hero-sub { font-size: 16px; color: var(--muted); max-width: 520px; }
+    /* ── SECTIONS ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
 
-    .section { margin-bottom: 4rem; }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-    .section-title { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-    .section-line { flex: 1; height: 1px; background: var(--border); }
+    .section { padding: 5rem 0; border-top: 1px solid var(--border); }
+    .section:first-child { border-top: none; }
 
-    .card-grid {
+    .section-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── HERO ── */
+    .hero { padding: 6rem 0 5rem; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 300px; gap: 4rem; align-items: center;
+    }
+    .hero-greeting {
+      font-size: 13px; font-weight: 500; color: var(--blue);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px; line-height: 1.05;
+      color: var(--blue); margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: 16px; color: var(--muted); line-height: 1.8;
+      max-width: 500px; margin-bottom: 2rem;
+    }
+    /* Icon link buttons */
+    .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .icon-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px; font-weight: 500; color: var(--text);
+      text-decoration: none; background: var(--bg);
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      cursor: pointer;
+    }
+    .icon-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); text-decoration: none; }
+    .icon-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .icon-btn.primary {
+      background: var(--blue); color: #fff; border-color: var(--blue);
+    }
+    .icon-btn.primary:hover { background: var(--blue-mid); border-color: var(--blue-mid); color: #fff; }
+
+    /* Photo */
+    .hero-photo-wrap { display: flex; justify-content: center; }
+    .hero-photo {
+      width: 260px; height: 320px;
+      border-radius: 16px;
+      background: var(--blue-light);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      position: relative;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .hero-photo-placeholder svg { width: 40px; height: 40px; stroke: var(--faint); fill: none; stroke-width: 1.2; }
+    .hero-photo-placeholder span { font-size: 12px; color: var(--faint); }
+
+    /* Maize accent bar */
+    .maize-bar {
+      height: 4px; width: 48px; background: var(--maize); border-radius: 2px; margin-bottom: 1.25rem;
+    }
+
+    /* ── PROJECTS ── */
+    .proj-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
     .proj-card {
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--surface);
+      background: var(--bg);
       cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
     }
-    .proj-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+    .proj-card:hover { transform: translateY(-3px); border-color: var(--blue); box-shadow: 0 8px 24px rgba(0,39,76,0.08); }
     .proj-card-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      display: block;
+      width: 100%; aspect-ratio: 16/10;
+      object-fit: cover; display: block;
+      background: var(--blue-light);
     }
-    .proj-card-img-placeholder {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: var(--surface2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
+    .proj-card-img-ph {
+      width: 100%; aspect-ratio: 16/10;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
     }
-    .ph-icon {
-      width: 38px; height: 38px;
-      border-radius: 50%;
+    .proj-card-img-ph svg { width: 28px; height: 28px; stroke: var(--faint); fill: none; stroke-width: 1.3; }
+    .proj-card-img-ph span { font-size: 11px; color: var(--faint); }
+    .proj-card-title {
+      padding: 14px 16px 16px;
+      font-size: 15px; font-weight: 600; color: var(--blue);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .proj-card-title svg { width: 14px; height: 14px; stroke: var(--faint); fill: none; stroke-width: 2; opacity: 0; transition: opacity 0.15s; flex-shrink: 0; }
+    .proj-card:hover .proj-card-title svg { opacity: 1; stroke: var(--blue); }
+
+    /* ── EXPERIENCE (logo card style) ── */
+    .exp-grid { display: flex; flex-direction: column; gap: 40px; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem; align-items: center;
+    }
+    .exp-item.flip { grid-template-columns: 280px 1fr; }
+    .exp-item.flip .exp-logo-card { order: -1; }
+
+    .exp-logo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    .exp-logo-card img { max-width: 100%; max-height: 80px; object-fit: contain; }
+    .exp-logo-ph {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .exp-logo-ph-box {
+      width: 64px; height: 64px;
+      border-radius: 14px;
+      background: var(--blue-light);
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
     }
-    .ph-icon svg { width: 16px; height: 16px; stroke: var(--faint); fill: none; stroke-width: 1.5; }
-    .ph-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
-    .proj-card-body { padding: 14px 16px 16px; }
-    .proj-card-title { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
-    .proj-card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-    .chip {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      padding: 2px 8px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 4px;
-      border: 1px solid var(--border);
+    .exp-logo-ph-box span {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: var(--blue);
     }
-    .proj-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 16px;
-      border-top: 1px solid var(--border);
-    }
-    .proj-card-year { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
-    .proj-card-arrow { font-size: 14px; color: var(--accent); }
+    .exp-logo-ph-label { font-size: 13px; font-weight: 600; color: var(--muted); }
 
-    .exp-row {
-      display: grid;
-      grid-template-columns: 3px 1fr;
-      gap: 1.25rem;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
+    .exp-content-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--maize);
+      background: var(--blue); display: inline-block;
+      padding: 2px 10px; border-radius: 4px; margin-bottom: 10px;
     }
-    .exp-row:last-child { border-bottom: 1px solid var(--border); }
-    .exp-bar { background: var(--accent-dim); border-radius: 2px; }
-    .exp-company { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-    .exp-role { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-    .exp-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); margin-bottom: 10px; }
-    .exp-bullets { padding-left: 1rem; font-size: 13px; color: var(--muted); line-height: 1.8; }
-    .exp-bullets li { margin-bottom: 3px; }
+    .exp-company { font-size: 22px; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
+    .exp-role { font-size: 14px; font-weight: 500; color: var(--muted); margin-bottom: 4px; }
+    .exp-date { font-size: 12px; color: var(--faint); margin-bottom: 14px; }
+    .exp-bullets { padding-left: 1.1rem; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .exp-bullets li { margin-bottom: 5px; }
 
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      color: var(--faint);
-      margin-top: 1rem;
+      background: var(--blue);
+      padding: 2.5rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
     }
+    .footer-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-name { font-family: 'Playfair Display', serif; font-size: 16px; color: #fff; }
     .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { color: var(--muted); }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--maize); }
 
-    /* Detail page */
-    .detail-wrap { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    /* ── DETAIL PAGE ── */
+    .detail-container { max-width: 820px; margin: 0 auto; padding: 0 2.5rem; }
 
     .detail-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--muted);
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
       padding: 2rem 0 2.5rem;
-      background: none;
-      border: none;
-      font-family: 'Space Grotesk', sans-serif;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
       transition: color 0.15s;
     }
-    .detail-back:hover { color: var(--text); }
+    .detail-back:hover { color: var(--blue); }
 
-    .detail-hero {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border);
+    .detail-hero-img {
+      width: 100%; aspect-ratio: 16/7;
+      object-fit: cover; border-radius: 14px;
+      background: var(--blue-light);
+      margin-bottom: 2.5rem; display: block;
     }
-    .detail-mono {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-    .detail-title {
-      font-size: 36px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    .detail-meta {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 13px;
-      color: var(--muted);
-      flex-wrap: wrap;
-      margin-bottom: 1.25rem;
-    }
-    .detail-meta span::before { content: '·'; margin-right: 0.5rem; color: var(--faint); }
-    .detail-meta span:first-child::before { content: ''; margin-right: 0; }
-
-    .detail-section { margin-bottom: 2.5rem; }
-    .detail-section-title {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .detail-overview { font-size: 15px; color: var(--muted); line-height: 1.8; }
-    .detail-bullets { padding-left: 1.25rem; font-size: 14px; color: var(--muted); line-height: 1.9; }
-    .detail-bullets li { margin-bottom: 6px; }
-
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
-    .media-slot {
-      aspect-ratio: 16/10;
+    .detail-hero-img-ph {
+      width: 100%; aspect-ratio: 16/7;
       background: var(--surface);
       border: 1px dashed var(--border);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      border-radius: 14px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 2.5rem;
     }
-    .media-slot svg { width: 20px; height: 20px; stroke: var(--faint); fill: none; stroke-width: 1.5; }
-    .media-slot span { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
-    .video-slot {
+    .detail-hero-img-ph svg { width: 32px; height: 32px; stroke: var(--faint); fill: none; stroke-width: 1.3; }
+    .detail-hero-img-ph span { font-size: 12px; color: var(--faint); }
+
+    .detail-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+    }
+    .detail-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px; color: var(--blue); line-height: 1.15; margin-bottom: 1rem;
+    }
+    .detail-meta {
+      display: flex; gap: 1.25rem; flex-wrap: wrap;
+      font-size: 13px; color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .detail-meta span { display: flex; align-items: center; gap: 5px; }
+    .detail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2.5rem; }
+    .detail-chip {
+      font-size: 12px; padding: 3px 10px;
+      background: var(--blue-light); color: var(--blue);
+      border-radius: 6px; border: 1px solid #c5d8ec; font-weight: 500;
+    }
+
+    .d-section { margin-bottom: 2.5rem; }
+    .d-section-title {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--faint);
+      border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 1.25rem;
+    }
+    .d-overview { font-size: 15px; color: var(--muted); line-height: 1.85; }
+    .d-bullets { padding-left: 1.25rem; font-size: 14px; color: var(--muted); line-height: 1.9; }
+    .d-bullets li { margin-bottom: 6px; }
+
+    /* Detail media */
+    .d-video-ph {
       aspect-ratio: 16/9;
       background: var(--surface);
       border: 1px dashed var(--border);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
       margin-bottom: 12px;
     }
-    .play-btn {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border);
+    .d-play {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 2px solid var(--border);
       display: flex; align-items: center; justify-content: center;
     }
-    .play-btn svg { width: 16px; height: 16px; fill: var(--faint); margin-left: 3px; }
-    .video-slot span { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); }
+    .d-play svg { width: 16px; height: 16px; fill: var(--faint); margin-left: 3px; }
+    .d-video-ph span { font-size: 12px; color: var(--faint); }
 
-    .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-    .link-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.125rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      text-decoration: none;
-      color: inherit;
-      background: var(--surface);
+    .d-img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .d-img-ph {
+      aspect-ratio: 16/10;
+      background: var(--surface); border: 1px dashed var(--border);
+      border-radius: 10px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 6px;
     }
-    .link-card:hover { border-color: var(--accent-dim); background: var(--surface2); text-decoration: none; }
-    .link-card-icon {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
+    .d-img-ph svg { width: 20px; height: 20px; stroke: var(--faint); fill: none; stroke-width: 1.3; }
+    .d-img-ph span { font-size: 11px; color: var(--faint); }
+
+    /* Detail link cards */
+    .d-link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .d-link-card {
+      border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 1rem 1.125rem;
+      display: flex; flex-direction: column; gap: 6px;
+      text-decoration: none; color: inherit; background: var(--bg);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .d-link-card:hover { border-color: var(--blue); background: var(--blue-light); text-decoration: none; }
+    .d-link-icon {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
     }
-    .link-card-icon svg { width: 14px; height: 14px; stroke: var(--muted); fill: none; stroke-width: 1.5; }
-    .link-card-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; }
-    .link-card-title { font-size: 13px; font-weight: 500; color: var(--text); }
+    .d-link-icon svg { width: 14px; height: 14px; stroke: var(--blue-mid); fill: none; stroke-width: 1.5; }
+    .d-link-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+    .d-link-title { font-size: 13px; font-weight: 600; color: var(--blue); }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="inner">
-    <span class="nav-name" onclick="showHome()">MINJAE KOO</span>
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="showHome()">Minjae Koo</a>
     <div class="nav-links">
-      <a href="#" onclick="showHome(); return false;">Projects</a>
+      <a href="#about" onclick="showHome(); return false;">About</a>
+      <a href="#projects" onclick="showHome(); return false;">Projects</a>
       <a href="#experience" onclick="showHome(); return false;">Experience</a>
-      <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
       <a href="mailto:minjaek@umich.edu">Contact</a>
     </div>
   </div>
 </nav>
 
-<!-- HOME PAGE -->
+<!-- ══════════ HOME PAGE ══════════ -->
 <div id="page-home" class="page active">
-  <div class="container">
-    <div class="hero">
-      <div class="hero-mono">Computer Engineering · University of Michigan</div>
-      <h1 class="hero-title">VLSI Design &<br>Digital Systems</h1>
-      <p class="hero-sub">Third-year CE student specializing in chip tapeout, digital circuits, and hardware engineering. GPA 3.83 · Dec 2027.</p>
-    </div>
 
-    <section class="section">
-      <div class="section-header">
-        <span class="section-title">Projects</span>
-        <div class="section-line"></div>
-      </div>
-      <div class="card-grid">
-
-        <div class="proj-card" onclick="showProject('cim')">
-          <!-- Replace the div below with: <img class="proj-card-img" src="images/cim.jpg" alt="CIM ASIC"> -->
-          <div class="proj-card-img-placeholder">
-            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-            <span class="ph-label">Add photo</span>
+  <!-- HERO / ABOUT -->
+  <div class="section hero" id="about">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="maize-bar"></div>
+          <div class="hero-greeting">Computer Engineering · University of Michigan</div>
+          <h1 class="hero-name">Hi! I'm<br>Minjae Koo.</h1>
+          <p class="hero-sub">
+            Third-year CE student specializing in VLSI chip design and digital hardware engineering. I've taped out chips in TSMC 65nm, designed pipelined processors from the transistor level up, and built systems across the full hardware stack. GPA 3.83 · Dec 2027.
+          </p>
+          <!-- Icon link buttons -->
+          <div class="hero-links">
+            <a class="icon-btn primary" href="mailto:minjaek@umich.edu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email me
+            </a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/minjae-koo" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a class="icon-btn" href="https://github.com/minjae-koo" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a class="icon-btn" href="Minjae_Koo_Resume.pdf" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              Resume
+            </a>
           </div>
-          <div class="proj-card-body">
-            <div class="proj-card-title">VLSI Compute-In-Memory ASIC</div>
-            <div class="proj-card-desc">End-to-end TSMC 65nm chip tapeout as team captain — RTL through physical signoff.</div>
-            <div class="chips">
-              <span class="chip">SystemVerilog</span><span class="chip">Cadence Innovus</span><span class="chip">DFT</span>
+        </div>
+
+        <!-- Photo — replace src with your actual photo path -->
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+            <!-- <img src="images/minjae.jpg" alt="Minjae Koo"> -->
+            <div class="hero-photo-placeholder">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <span>Add your photo</span>
             </div>
           </div>
-          <div class="proj-card-footer">
-            <span class="proj-card-year">Jan 2026 – Present</span>
-            <span class="proj-card-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <div class="proj-grid">
+
+        <div class="proj-card" onclick="showProject('cim')">
+          <!-- Replace with: <img class="proj-card-img" src="images/cim.jpg" alt="CIM ASIC"> -->
+          <div class="proj-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add photo</span>
+          </div>
+          <div class="proj-card-title">
+            VLSI Compute-In-Memory ASIC
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </div>
 
         <div class="proj-card" onclick="showProject('riscv')">
-          <div class="proj-card-img-placeholder">
-            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-            <span class="ph-label">Add photo</span>
+          <div class="proj-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add photo</span>
           </div>
-          <div class="proj-card-body">
-            <div class="proj-card-title">16-bit RISC-V Processor</div>
-            <div class="proj-card-desc">2-stage pipelined processor with transistor-level layout and custom 8T-SRAM.</div>
-            <div class="chips">
-              <span class="chip">Cadence Virtuoso</span><span class="chip">TSMC 65nm</span><span class="chip">DRC/LVS</span>
-            </div>
-          </div>
-          <div class="proj-card-footer">
-            <span class="proj-card-year">Sep – Dec 2025</span>
-            <span class="proj-card-arrow">→</span>
+          <div class="proj-card-title">
+            16-bit RISC-V Processor
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </div>
 
         <div class="proj-card" onclick="showProject('pipeline')">
-          <div class="proj-card-img-placeholder">
-            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-            <span class="ph-label">Add photo</span>
+          <div class="proj-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add photo</span>
           </div>
-          <div class="proj-card-body">
-            <div class="proj-card-title">LC-2K Pipelined Processor Simulator</div>
-            <div class="proj-card-desc">5-stage pipeline in C with forwarding, stalling, and branch prediction.</div>
-            <div class="chips">
-              <span class="chip">C</span><span class="chip">Pipeline</span><span class="chip">Arch</span>
-            </div>
-          </div>
-          <div class="proj-card-footer">
-            <span class="proj-card-year">Oct – Nov 2025</span>
-            <span class="proj-card-arrow">→</span>
+          <div class="proj-card-title">
+            LC-2K Pipelined Processor Simulator
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </div>
 
         <div class="proj-card" onclick="showProject('calc')">
-          <div class="proj-card-img-placeholder">
-            <div class="ph-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-            <span class="ph-label">Add photo</span>
+          <div class="proj-card-img-ph">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add photo</span>
           </div>
-          <div class="proj-card-body">
-            <div class="proj-card-title">Verilog Sequential Calculator</div>
-            <div class="proj-card-desc">RTL calculator with Booth's multiplication, verified on Altera DE2-115 FPGA.</div>
-            <div class="chips">
-              <span class="chip">Verilog</span><span class="chip">ModelSim</span><span class="chip">FPGA</span>
+          <div class="proj-card-title">
+            Verilog Sequential Calculator
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="experience">
+    <div class="container">
+      <div class="section-label">Work Experience</div>
+      <div class="exp-grid">
+
+        <!-- LG Energy Solution -->
+        <div class="exp-item">
+          <div>
+            <div class="exp-content-label">Internship</div>
+            <div class="exp-company">LG Energy Solution</div>
+            <div class="exp-role">Cell Equipment Technology Team Intern</div>
+            <div class="exp-date">May 2025 – Aug 2025 · Holland, MI</div>
+            <ul class="exp-bullets">
+              <li>Designed HMI-based PET film roll reuse tracking system in MELSOFT GT Works3 with QR + MES integration, reducing downtime by 7 hrs/month</li>
+              <li>Modified motor cover in SolidWorks, reducing operator PM time by ~70%</li>
+              <li>Gained hands-on understanding of lithium-ion battery cell assembly processes and systems</li>
+            </ul>
+          </div>
+          <div class="exp-logo-card">
+            <!-- <img src="images/lg-logo.png" alt="LG Energy Solution"> -->
+            <div class="exp-logo-ph">
+              <div class="exp-logo-ph-box"><span>LG</span></div>
+              <div class="exp-logo-ph-label">LG Energy Solution</div>
             </div>
           </div>
-          <div class="proj-card-footer">
-            <span class="proj-card-year">Jan – Feb 2025</span>
-            <span class="proj-card-arrow">→</span>
+        </div>
+
+        <!-- Supermileage -->
+        <div class="exp-item flip">
+          <div class="exp-logo-card">
+            <!-- <img src="images/supermileage-logo.png" alt="Supermileage"> -->
+            <div class="exp-logo-ph">
+              <div class="exp-logo-ph-box"><span>SM</span></div>
+              <div class="exp-logo-ph-label">Supermileage Team</div>
+            </div>
+          </div>
+          <div>
+            <div class="exp-content-label">Project Team</div>
+            <div class="exp-company">Supermileage Project Team</div>
+            <div class="exp-role">Power Electronics Subteam Member</div>
+            <div class="exp-date">Oct 2023 – Dec 2024 · Ann Arbor, MI</div>
+            <ul class="exp-bullets">
+              <li>Designed a 2-layer PCB relay driver board with MOSFET low-side switching, verified through thermal checks and oscilloscope measurements</li>
+              <li>Mentored ~10 new members in soldering, oscilloscope use, and Altium workflow</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- JR Automation -->
+        <div class="exp-item">
+          <div>
+            <div class="exp-content-label">Internship</div>
+            <div class="exp-company">JR Automation</div>
+            <div class="exp-role">Engineering Consulting Intern</div>
+            <div class="exp-date">May 2023 – Aug 2023 · Holland, MI</div>
+            <ul class="exp-bullets">
+              <li>Built a Power BI dashboard integrating HR data and industry benchmarks to identify employee attrition risks</li>
+              <li>Automated HR survey analysis using Excel macros and Python (pandas)</li>
+              <li>Conducted competitor benchmarking on benefits and culture vs. industry leaders</li>
+            </ul>
+          </div>
+          <div class="exp-logo-card">
+            <!-- <img src="images/jr-logo.png" alt="JR Automation"> -->
+            <div class="exp-logo-ph">
+              <div class="exp-logo-ph-box"><span>JR</span></div>
+              <div class="exp-logo-ph-label">JR Automation</div>
+            </div>
           </div>
         </div>
 
       </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="section-header">
-        <span class="section-title">Experience</span>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="exp-row">
-        <div class="exp-bar"></div>
-        <div>
-          <div class="exp-company">LG Energy Solution</div>
-          <div class="exp-role">Cell Equipment Technology Team Intern</div>
-          <div class="exp-date">May 2025 – Aug 2025 · Holland, MI</div>
-          <ul class="exp-bullets">
-            <li>Designed HMI-based PET film roll reuse tracking system in MELSOFT GT Works3 with QR + MES integration — reduced downtime by 7 hrs/month</li>
-            <li>Modified motor cover in SolidWorks, reducing operator PM time by ~70%</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-row">
-        <div class="exp-bar"></div>
-        <div>
-          <div class="exp-company">Supermileage Project Team</div>
-          <div class="exp-role">Power Electronics Subteam Member</div>
-          <div class="exp-date">Oct 2023 – Dec 2024 · Ann Arbor, MI</div>
-          <ul class="exp-bullets">
-            <li>Designed 2-layer PCB relay driver board with MOSFET low-side switching; verified with oscilloscope and thermal checks</li>
-            <li>Mentored ~10 new members in soldering, oscilloscope use, and Altium workflow</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-row">
-        <div class="exp-bar"></div>
-        <div>
-          <div class="exp-company">JR Automation</div>
-          <div class="exp-role">Engineering Consulting Intern</div>
-          <div class="exp-date">May 2023 – Aug 2023 · Holland, MI</div>
-          <ul class="exp-bullets">
-            <li>Built Power BI dashboard integrating HR data and benchmarks to identify attrition risks</li>
-            <li>Automated HR survey analysis using Excel macros and Python (pandas)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-row">
-        <div class="exp-bar"></div>
-        <div>
-          <div class="exp-company">University of Michigan — EECS 215</div>
-          <div class="exp-role">Course Grader</div>
-          <div class="exp-date">2024 – Present · Ann Arbor, MI</div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <span>minjae-koo.github.io</span>
-      <div class="footer-links">
-        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
-        <a href="mailto:minjaek@umich.edu">Email</a>
-      </div>
-    </footer>
+    </div>
   </div>
-</div>
 
-<!-- DETAIL PAGE -->
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Minjae Koo</span>
+      <div class="footer-links">
+        <a href="mailto:minjaek@umich.edu">Email</a>
+        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
+        <a href="Minjae_Koo_Resume.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end page-home -->
+
+
+<!-- ══════════ DETAIL PAGE ══════════ -->
 <div id="page-project" class="page">
-  <div class="detail-wrap">
+
+  <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <div class="detail-hero">
-      <div class="detail-mono" id="d-label"></div>
-      <h2 class="detail-title" id="d-title"></h2>
-      <div class="detail-meta" id="d-meta"></div>
-      <div class="chips" id="d-chips"></div>
+    <!-- Hero image — swap placeholder for real img per-project -->
+    <div class="detail-hero-img-ph" id="d-hero-img">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Replace with &lt;img src="images/project/hero.jpg"&gt;</span>
     </div>
 
-    <div class="detail-section">
-      <div class="detail-section-title">Overview</div>
-      <p class="detail-overview" id="d-overview"></p>
+    <div class="detail-eyebrow" id="d-label"></div>
+    <h2 class="detail-title" id="d-title"></h2>
+    <div class="detail-meta" id="d-meta"></div>
+    <div class="detail-chips" id="d-chips"></div>
+
+    <div class="d-section">
+      <div class="d-section-title">Overview</div>
+      <p class="d-overview" id="d-overview"></p>
     </div>
 
-    <div class="detail-section">
-      <div class="detail-section-title">Key contributions</div>
-      <ul class="detail-bullets" id="d-bullets"></ul>
+    <div class="d-section">
+      <div class="d-section-title">Key contributions</div>
+      <ul class="d-bullets" id="d-bullets"></ul>
     </div>
 
-    <div class="detail-section">
-      <div class="detail-section-title">Media</div>
-      <!-- VIDEO: Replace this div with <iframe> or <video> when you have footage -->
-      <div class="video-slot">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
-        <span>Replace with &lt;video src="..."&gt; or a YouTube &lt;iframe&gt;</span>
-      </div>
-      <!-- IMAGES: Replace each media-slot with <img src="images/project/photo.jpg"> -->
-      <div class="media-grid">
-        <div class="media-slot">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add image</span>
-        </div>
-        <div class="media-slot">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add image</span>
-        </div>
-        <div class="media-slot">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Add image</span>
-        </div>
+    <div class="d-section">
+      <div class="d-section-title">Demo video</div>
+      <!-- Replace with <video> or YouTube iframe when ready -->
+      <div class="d-video-ph">
+        <div class="d-play"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+        <span>Replace this block with &lt;video&gt; or a YouTube embed</span>
       </div>
     </div>
 
-    <div class="detail-section">
-      <div class="detail-section-title">Links & documents</div>
-      <div class="link-grid" id="d-links"></div>
+    <div class="d-section">
+      <div class="d-section-title">Photos</div>
+      <div class="d-img-grid">
+        <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
+        <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
+        <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Links & documents</div>
+      <div class="d-link-grid" id="d-links"></div>
     </div>
   </div>
-</div>
+
+  <footer style="margin-top:4rem;">
+    <div class="footer-inner">
+      <span class="footer-name">Minjae Koo</span>
+      <div class="footer-links">
+        <a href="mailto:minjaek@umich.edu">Email</a>
+        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
+        <a href="Minjae_Koo_Resume.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end page-project -->
+
 
 <script>
   const ICON = {
@@ -557,7 +633,7 @@
       overview: 'Led end-to-end tapeout of an all-digital Compute-In-Memory ASIC in TSMC 65nm as Team Captain. Responsible for the complete flow from RTL design and verification through synthesis, physical design, top-level integration, and physical signoff.',
       bullets: [
         'Directed the full RTL-to-GDSII flow for a CIM architecture, owning design, synthesis, and physical implementation',
-        'Led a mid-project architecture pivot from hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without schedule impact',
+        'Led a mid-project architecture pivot from a hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without schedule impact',
         'Developed complete DFT infrastructure with scan-chain insertion and automated synthesis TCL scripts',
         'Verified logic correctness in Synopsys Verdi; achieved physical signoff with DRC/LVS-clean layout',
       ],
@@ -631,14 +707,14 @@
     document.getElementById('d-label').textContent = p.label;
     document.getElementById('d-title').textContent = p.title;
     document.getElementById('d-meta').innerHTML = p.meta.map(m => `<span>${m}</span>`).join('');
-    document.getElementById('d-chips').innerHTML = p.chips.map(c => `<span class="chip">${c}</span>`).join('');
+    document.getElementById('d-chips').innerHTML = p.chips.map(c => `<span class="detail-chip">${c}</span>`).join('');
     document.getElementById('d-overview').textContent = p.overview;
     document.getElementById('d-bullets').innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
     document.getElementById('d-links').innerHTML = p.links.map(l =>
-      `<a class="link-card" href="${l.href}">
-        <div class="link-card-icon">${ICON[l.icon]}</div>
-        <span class="link-card-label">${l.label}</span>
-        <span class="link-card-title">${l.title}</span>
+      `<a class="d-link-card" href="${l.href}">
+        <div class="d-link-icon">${ICON[l.icon]}</div>
+        <span class="d-link-label">${l.label}</span>
+        <span class="d-link-title">${l.title}</span>
       </a>`
     ).join('');
     document.getElementById('page-home').classList.remove('active');
