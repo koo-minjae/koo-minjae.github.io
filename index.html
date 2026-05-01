@@ -418,11 +418,7 @@
       <div class="proj-grid">
 
         <div class="proj-card" onclick="showProject('cim')">
-          <!-- Replace with: <img class="proj-card-img" src="images/cim.jpg" alt="CIM ASIC"> -->
-          <div class="proj-card-img-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add photo</span>
-          </div>
+          <img class="proj-card-img" src="images/CIM_cover.png" alt="VLSI CIM ASIC">
           <div class="proj-card-title">
             VLSI Compute-In-Memory ASIC
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -430,34 +426,9 @@
         </div>
 
         <div class="proj-card" onclick="showProject('riscv')">
-          <div class="proj-card-img-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add photo</span>
-          </div>
+          <img class="proj-card-img" src="images/427_cover.png" alt="16-bit RISC-V Processor">
           <div class="proj-card-title">
             16-bit RISC-V Processor
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-
-        <div class="proj-card" onclick="showProject('pipeline')">
-          <div class="proj-card-img-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add photo</span>
-          </div>
-          <div class="proj-card-title">
-            LC-2K Pipelined Processor Simulator
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </div>
-        </div>
-
-        <div class="proj-card" onclick="showProject('calc')">
-          <div class="proj-card-img-ph">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add photo</span>
-          </div>
-          <div class="proj-card-title">
-            Verilog Sequential Calculator
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </div>
@@ -557,54 +528,81 @@
 </div><!-- end page-home -->
 
 
-<!-- ══════════ DETAIL PAGE ══════════ -->
-<div id="page-project" class="page">
-
+<!-- ══════════ DETAIL: CIM ASIC ══════════ -->
+<div id="page-cim" class="page">
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <!-- Hero image — swap placeholder for real img per-project -->
-    <div class="detail-hero-img-ph" id="d-hero-img">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      <span>Replace with &lt;img src="images/project/hero.jpg"&gt;</span>
-    </div>
+    <img class="detail-hero-img" src="images/CIM_cover.png" alt="VLSI Compute-In-Memory ASIC">
 
-    <div class="detail-eyebrow" id="d-label"></div>
-    <h2 class="detail-title" id="d-title"></h2>
-    <div class="detail-meta" id="d-meta"></div>
-    <div class="detail-chips" id="d-chips"></div>
+    <div class="detail-eyebrow">ECE 598 — VLSI Chip Tapeout Lab</div>
+    <h2 class="detail-title">VLSI Compute-In-Memory ASIC</h2>
+    <div class="detail-meta">
+      <span>Jan 2026 – Apr 2026</span>
+      <span>Team Captain · 5 members</span>
+      <span>TSMC 65LP</span>
+    </div>
+    <div class="detail-chips">
+      <span class="detail-chip">SystemVerilog</span>
+      <span class="detail-chip">Cadence Innovus</span>
+      <span class="detail-chip">Synopsys DC</span>
+      <span class="detail-chip">Scan Chain DFT</span>
+      <span class="detail-chip">TSMC 65LP</span>
+    </div>
 
     <div class="d-section">
       <div class="d-section-title">Overview</div>
-      <p class="d-overview" id="d-overview"></p>
+      <p class="d-overview">The VLSI Compute-In-Memory (CIM) ASIC project was completed as part of ECE 598, a newly developed Apple-sponsored VLSI tapeout lab at the University of Michigan, where I served as team captain for a five-member design team. Our project explored a fully digital CIM architecture aimed at addressing the growing memory bottleneck in modern AI workloads by performing computation directly within memory. We designed a latch-based CIM core supporting 1-bit weights and 4-bit activations, combining in-memory bit-serial computation with synthesized peripheral control and accumulation logic. The design followed a complete RTL-to-GDSII ASIC flow in TSMC 65LP using SystemVerilog, Synopsys Design Compiler, and Cadence Innovus. Through extensive verification (including randomized testbenches, block-level simulations, and post-synthesis and post-layout timing validation) we ensured full functional correctness across all stages. The final design successfully taped out with clean DRC/LVS signoff, achieving a 500 MHz operating frequency, 51,437.88 μm² core area, and 19.37 mW power consumption.</p>
     </div>
 
     <div class="d-section">
       <div class="d-section-title">Key contributions</div>
-      <ul class="d-bullets" id="d-bullets"></ul>
-    </div>
-
-    <div class="d-section">
-      <div class="d-section-title">Demo video</div>
-      <!-- Replace with <video> or YouTube iframe when ready -->
-      <div class="d-video-ph">
-        <div class="d-play"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
-        <span>Replace this block with &lt;video&gt; or a YouTube embed</span>
-      </div>
+      <ul class="d-bullets">
+        <li>Served as team captain, leading a 5-member team through all stages of the ASIC design flow from architecture to tapeout</li>
+        <li>Directed the full RTL-to-GDSII flow for a CIM architecture, owning design, synthesis, and physical implementation</li>
+        <li>Led a mid-project architecture pivot from a hand-routed 6T SRAM core to a scalable latch-based RTL implementation</li>
+        <li>Led verification efforts, including randomized testbench development, waveform debugging in Verdi, and post-synthesis/post-layout validation</li>
+        <li>Managed cross-team integration, ensuring compatibility with shared chip infrastructure, including successful integration into a global scan chain</li>
+      </ul>
     </div>
 
     <div class="d-section">
       <div class="d-section-title">Photos</div>
       <div class="d-img-grid">
-        <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
-        <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
+        <!-- Add more images here: <img src="images/cim_photo2.jpg" style="width:100%;border-radius:10px;"> -->
         <div class="d-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Add image</span></div>
       </div>
     </div>
 
     <div class="d-section">
-      <div class="d-section-title">Links & documents</div>
-      <div class="d-link-grid" id="d-links"></div>
+      <div class="d-section-title">Presentation slides</div>
+      <div class="d-link-grid">
+        <a class="d-link-card" href="docs/CIM_proposal.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Project Proposal Review</span>
+        </a>
+        <a class="d-link-card" href="docs/CIM_architecture.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Architecture Review</span>
+        </a>
+        <a class="d-link-card" href="docs/CIM_detailed.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Detailed Design Review</span>
+        </a>
+        <a class="d-link-card" href="docs/CIM_physical_design.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Physical Design Review</span>
+        </a>
+        <a class="d-link-card" href="docs/CIM_tapeout.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Tapeout Review</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -619,113 +617,95 @@
       </div>
     </div>
   </footer>
+</div><!-- end page-cim -->
 
-</div><!-- end page-project -->
+
+<!-- ══════════ DETAIL: RISC-V ══════════ -->
+<div id="page-riscv" class="page">
+  <div class="detail-container">
+    <button class="detail-back" onclick="showHome()">← All projects</button>
+
+    <img class="detail-hero-img" src="images/427_cover.png" alt="16-bit RISC-V Processor">
+
+    <div class="detail-eyebrow">EECS 427 — VLSI Design I</div>
+    <h2 class="detail-title">16-bit RISC-V Processor</h2>
+    <div class="detail-meta">
+      <span>Sep – Dec 2025</span>
+      <span>Team of 5</span>
+      <span>TSMC 65nm</span>
+    </div>
+    <div class="detail-chips">
+      <span class="detail-chip">Cadence Virtuoso</span>
+      <span class="detail-chip">Cadence Innovus</span>
+      <span class="detail-chip">NCVerilog</span>
+      <span class="detail-chip">TSMC 65nm</span>
+      <span class="detail-chip">Hand-layout</span>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Overview</div>
+      <p class="d-overview">The 16-bit RISC-V Processor Design Project was the course project for EECS 427 (VLSI Design I) during my Junior Fall semester (FA25) at the University of Michigan and served as my undergraduate major design experience. Our five-member team designed and implemented a custom 16-bit pipelined RISC processor in TSMC 65 nm technology, incorporating a complete baseline instruction set architecture, datapath, control logic, arithmetic units, and memory interface circuitry. The project combined full-custom circuit design with RTL development, synthesis, and automated place-and-route using an industry-standard ASIC flow. Through extensive NCVerilog verification, custom testbench development, pre/post-layout SPICE simulations, and full DRC/LVS signoff, we validated complete processor functionality and successfully executed a Fibonacci benchmark program. The final design achieved a 162 μm × 200 μm core area and operated at a maximum clock frequency of 200 MHz.</p>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Key contributions</div>
+      <ul class="d-bullets">
+        <li>Served as a primary technical contributor across the full project lifecycle, helping drive architecture, implementation, and integration efforts within the team</li>
+        <li>Designed transistor-level schematics and hand-laid the 16-bit register file, ALU (ADD, AND, OR, and XOR), and logarithmic shifter</li>
+        <li>Developed RTL, performed synthesis, and completed automated place-and-route for the program counter unit with branch resolution logic and the instruction controller/decoder</li>
+        <li>Wrote custom NCVerilog testbenches for functional and corner-case validation</li>
+        <li>Performed pre-layout and post-layout SPICE simulations to verify timing and correctness with extracted parasitics</li>
+      </ul>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Demo video</div>
+      <iframe
+        src="https://www.youtube.com/embed/ihcbhKHzspE"
+        style="width:100%;aspect-ratio:16/9;border-radius:12px;border:none;"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Links & documents</div>
+      <div class="d-link-grid">
+        <a class="d-link-card" href="docs/427_report.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Project report</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top:4rem;">
+    <div class="footer-inner">
+      <span class="footer-name">Minjae Koo</span>
+      <div class="footer-links">
+        <a href="mailto:minjaek@umich.edu">Email</a>
+        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
+        <a href="Minjae_Koo_Resume.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+</div><!-- end page-riscv -->
 
 
 <script>
-  const ICON = {
-    github: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`,
-    doc: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
-    slides: `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
-  };
-
-  const PROJECTS = {
-    cim: {
-      label: 'VLSI · Chip Tapeout Lab · 2026',
-      title: 'VLSI Compute-In-Memory ASIC',
-      meta: ['Jan 2026 – Present', 'Team Captain · 5 members', 'TSMC 65nm'],
-      chips: ['SystemVerilog', 'Cadence Innovus', 'Synopsys DC', 'Verdi', 'Scan Chain DFT', 'TSMC 65nm'],
-      overview: 'Led end-to-end tapeout of an all-digital Compute-In-Memory ASIC in TSMC 65nm as Team Captain. Responsible for the complete flow from RTL design and verification through synthesis, physical design, top-level integration, and physical signoff.',
-      bullets: [
-        'Directed the full RTL-to-GDSII flow for a CIM architecture, owning design, synthesis, and physical implementation',
-        'Led a mid-project architecture pivot from a hand-routed 6T SRAM core to a synthesizable latch-based RTL core, resolving peripheral routing issues without schedule impact',
-        'Developed complete DFT infrastructure with scan-chain insertion and automated synthesis TCL scripts',
-        'Verified logic correctness in Synopsys Verdi; achieved physical signoff with DRC/LVS-clean layout',
-      ],
-      links: [
-        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
-        { icon: 'doc', label: 'Report', title: 'Tapeout report (PDF)', href: '#' },
-        { icon: 'slides', label: 'Slides', title: 'Design review slides', href: '#' },
-      ],
-    },
-    riscv: {
-      label: 'VLSI Design I · Sep – Dec 2025',
-      title: '16-bit RISC-V Processor',
-      meta: ['Sep – Dec 2025', 'Team of 5', 'TSMC 65nm'],
-      chips: ['Cadence Virtuoso', 'Innovus', 'NCVerilog', 'TSMC 65nm', 'DRC/LVS', '8T-SRAM'],
-      overview: 'The 16-bit RISC-V Processor Design Project was the course project for EECS 427 (VLSI Design I) during my Junior Fall semester (FA25) at the University of Michigan and served as my undergraduate major design experience. Our five-member team designed and implemented a custom 16-bit pipelined RISC processor in TSMC 65 nm technology, incorporating a complete baseline instruction set architecture, datapath, control logic, arithmetic units, and memory interface circuitry. The project combined full-custom circuit design with RTL development, synthesis, and automated place-and-route using an industry-standard ASIC flow. Through extensive NCVerilog verification, custom testbench development, pre/post-layout SPICE simulations, and full DRC/LVS signoff, we validated complete processor functionality and successfully executed a Fibonacci benchmark program. The final design achieved a 162 μm × 200 μm core area and operated at a maximum clock frequency of 200 MHz. This project was my first hands-on experience in processor microarchitecture, VLSI implementation, and the integration of digital design from architecture to physical layout.',
-      bullets: [
-        'Served as a primary technical contributor across the full project lifecycle, helping drive architecture, implementation, and integration efforts within the team',
-        'Designed transistor-level schematics and hand-laid the 16-bit register file, ALU (ADD, AND, OR, and XOR), and logarithmic shifter',
-        'Developed RTL, performed synthesis, and completed automated place-and-route for the program counter unit with branch resolution logic and the instruction controller/decoder, enabling correct baseline ISA execution',
-        'Wrote custom NCVerilog testbenches for functional and corner-case validation',
-        'Performed pre-layout and post-layout SPICE simulations to verify timing and correctness with extracted parasitics',
-      ],
-      links: [
-        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
-        { icon: 'doc', label: 'Report', title: 'Design report (PDF)', href: '#' },
-      ],
-    },
-    pipeline: {
-      label: 'Computer Architecture · Oct – Nov 2025',
-      title: 'LC-2K Pipelined Processor Simulator',
-      meta: ['Oct – Nov 2025', 'Solo project', 'C'],
-      chips: ['C', 'Pipeline', 'Data Forwarding', 'Branch Prediction', 'Assembler'],
-      overview: 'Implemented a complete LC-2K assembler and 5-stage pipeline simulator in C. Models clocked pipeline behavior with full hazard handling, data forwarding, stall insertion, and branch prediction.',
-      bullets: [
-        'Built an assembler to translate LC-2K assembly (.as) to machine code (.mc) for simulation input',
-        'Implemented 5-stage pipeline with data forwarding, stall insertion, and branch prediction logic',
-        'Modeled full pipeline state using state/newstate structs to simulate clocked register behavior',
-        'Validated against a suite of test programs covering all hazard detection edge cases',
-      ],
-      links: [
-        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
-        { icon: 'doc', label: 'Write-up', title: 'Project write-up (PDF)', href: '#' },
-      ],
-    },
-    calc: {
-      label: 'Logic Design · Jan – Feb 2025',
-      title: 'Verilog Sequential Calculator',
-      meta: ['Jan – Feb 2025', 'Solo project', 'Verilog · FPGA'],
-      chips: ['Verilog', 'ModelSim', 'Quartus Prime', 'Altera DE2-115', "Booth's Algorithm", 'RTL'],
-      overview: "Designed an RTL-based sequential calculator in Verilog supporting addition, subtraction, multiplication, and division with built-in error handling. Verified in ModelSim simulation and on physical FPGA hardware.",
-      bullets: [
-        "Implemented a ripple-carry adder and Booth's multiplication algorithm at the RTL level",
-        'Added robust error handling for edge cases including division by zero',
-        'Verified full functionality through ModelSim testbench simulations',
-        'Deployed and tested on Altera DE2-115 FPGA development board',
-      ],
-      links: [
-        { icon: 'github', label: 'GitHub', title: 'Source repository', href: '#' },
-        { icon: 'doc', label: 'Report', title: 'Lab report (PDF)', href: '#' },
-      ],
-    },
-  };
+  const PAGES = ['page-home', 'page-cim', 'page-riscv'];
 
   function showHome() {
+    PAGES.forEach(id => document.getElementById(id).classList.remove('active'));
     document.getElementById('page-home').classList.add('active');
-    document.getElementById('page-project').classList.remove('active');
     window.scrollTo(0, 0);
   }
 
   function showProject(id) {
-    const p = PROJECTS[id];
-    document.getElementById('d-label').textContent = p.label;
-    document.getElementById('d-title').textContent = p.title;
-    document.getElementById('d-meta').innerHTML = p.meta.map(m => `<span>${m}</span>`).join('');
-    document.getElementById('d-chips').innerHTML = p.chips.map(c => `<span class="detail-chip">${c}</span>`).join('');
-    document.getElementById('d-overview').textContent = p.overview;
-    document.getElementById('d-bullets').innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
-    document.getElementById('d-links').innerHTML = p.links.map(l =>
-      `<a class="d-link-card" href="${l.href}">
-        <div class="d-link-icon">${ICON[l.icon]}</div>
-        <span class="d-link-label">${l.label}</span>
-        <span class="d-link-title">${l.title}</span>
-      </a>`
-    ).join('');
-    document.getElementById('page-home').classList.remove('active');
-    document.getElementById('page-project').classList.add('active');
+    const pageId = id === 'cim' ? 'page-cim' : 'page-riscv';
+    PAGES.forEach(p => document.getElementById(p).classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
   }
 </script>
