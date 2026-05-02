@@ -299,6 +299,9 @@
       border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 1.25rem;
     }
     .d-overview { font-size: 15px; color: var(--muted); line-height: 1.85; }
+
+    .d-overview + .d-overview { margin-top: 1rem; }
+
     .d-bullets { padding-left: 1.25rem; font-size: 14px; color: var(--muted); line-height: 1.9; }
     .d-bullets li { margin-bottom: 6px; }
 
@@ -457,15 +460,23 @@
       <div class="section-label">Projects</div>
       <div class="proj-grid">
 
-        <div class="proj-card" onclick="showProject('cim')">
-          <img class="proj-card-img" src="images/CIM_cover.png" alt="VLSI CIM ASIC">
+        <div class="proj-card" onclick="showProject('598')">
+          <img class="proj-card-img" src="images/598_cover.png" alt="VLSI CIM ASIC">
           <div class="proj-card-title">
-            VLSI Compute-In-Memory ASIC
+            Compute-In-Memory ASIC Tapeout
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </div>
 
-        <div class="proj-card" onclick="showProject('riscv')">
+        <div class="proj-card" onclick="showProject('470')">
+          <img class="proj-card-img" src="images/470_cover.png" alt="Superscalar LC2K Processor">
+          <div class="proj-card-title">
+              Superscalar LC2K Processor
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <div class="proj-card" onclick="showProject('427')">
           <img class="proj-card-img" src="images/427_cover.png" alt="16-bit RISC-V Processor">
           <div class="proj-card-title">
             16-bit RISC-V Processor
@@ -553,18 +564,17 @@
 
 
 <!-- ══════════ DETAIL: CIM ASIC ══════════ -->
-<div id="page-cim" class="page">
+<div id="page-598" class="page">
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <img class="detail-hero-img zoomable" src="images/CIM_cover.png" alt="Digital Compute-In-Memory ASIC Tapeout" onclick="openLightbox(this.src, this.alt)">
+    <img class="detail-hero-img zoomable" src="images/598_cover.png" alt="Compute-In-Memory ASIC Tapeout" onclick="openLightbox(this.src, this.alt)">
 
     <div class="detail-eyebrow">ECE 598 — VLSI Chip Tapeout Lab</div>
-    <h2 class="detail-title">Digital Compute-In-Memory ASIC Tapeout</h2>
+    <h2 class="detail-title">Compute-In-Memory ASIC Tapeout</h2>
     <div class="detail-meta">
       <span>Jan 2026 – Apr 2026</span>
       <span>Team Captain · 5 members</span>
-      <span>TSMC 65LP</span>
     </div>
     <div class="detail-chips">
       <span class="detail-chip">SystemVerilog</span>
@@ -593,35 +603,34 @@
     <div class="d-section">
       <div class="d-section-title">Photos</div>
       <div class="d-img-grid">
-        <img src="images/CIM_architecture_diagram.png" alt="CIM Architecture Diagram" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
-        <!-- <img src="images/CIM_FSM.png" alt="CIM FSM" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);"> -->
+        <img src="images/598_architecture_diagram.png" alt="598 Architecture Diagram" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
       </div>
     </div>
 
     <div class="d-section">
       <div class="d-section-title">Presentation slides</div>
       <div class="d-link-grid">
-        <a class="d-link-card" href="docs/CIM_proposal.pdf" target="_blank">
+        <a class="d-link-card" href="docs/598_proposal.pdf" target="_blank">
           <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="d-link-label">PDF</span>
           <span class="d-link-title">Project Proposal Review</span>
         </a>
-        <a class="d-link-card" href="docs/CIM_architecture.pdf" target="_blank">
+        <a class="d-link-card" href="docs/598_architecture.pdf" target="_blank">
           <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="d-link-label">PDF</span>
           <span class="d-link-title">Architecture Review</span>
         </a>
-        <a class="d-link-card" href="docs/CIM_detailed.pdf" target="_blank">
+        <a class="d-link-card" href="docs/598_detailed.pdf" target="_blank">
           <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="d-link-label">PDF</span>
           <span class="d-link-title">Detailed Design Review</span>
         </a>
-        <a class="d-link-card" href="docs/CIM_physical_design.pdf" target="_blank">
+        <a class="d-link-card" href="docs/598_physical_design.pdf" target="_blank">
           <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="d-link-label">PDF</span>
           <span class="d-link-title">Physical Design Review</span>
         </a>
-        <a class="d-link-card" href="docs/CIM_tapeout.pdf" target="_blank">
+        <a class="d-link-card" href="docs/598_tapeout.pdf" target="_blank">
           <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span class="d-link-label">PDF</span>
           <span class="d-link-title">Tapeout Review</span>
@@ -641,11 +650,72 @@
       </div>
     </div>
   </footer>
-</div><!-- end page-cim -->
+</div><!-- end page-598 -->
 
+<!-- ══════════ DETAIL: Superscalar LC2K Processor ══════════ -->
+<div id="page-470" class="page">
+  <div class="detail-container">
+    <button class="detail-back" onclick="showHome()">← All projects</button>
+
+    <img class="detail-hero-img zoomable" src="images/470_cover.png" alt="Superscalar LC2K Processor" onclick="openLightbox(this.src, this.alt)">
+
+    <div class="detail-eyebrow">EECS 470 — Computer Architecture</div>
+    <h2 class="detail-title">Superscalar LC2K Processor</h2>
+    <div class="detail-meta">
+      <span>Jan 2026 – Apr 2026</span>
+      <span>Team of 5</span>
+    </div>
+    <div class="detail-chips">
+      <span class="detail-chip">Computer Architecture</span>
+      <span class="detail-chip">Two-wide Superscalar</span>
+      <span class="detail-chip">Limited OoO</span>
+      <span class="detail-chip">SystemVerilog</span>
+      <span class="detail-chip">Synthesis</span>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Overview</div>
+      <p class="d-overview">The EECS 470 Final Project was a team-based computer architecture project focused on extending a baseline 3-stage in-order LC2K processor into a higher-performance superscalar design. LC2K is the instructional ISA used in EECS 370 at the University of Michigan, and our starter design included a simple IF, ID, and EX pipeline. From this base, our five-member team redesigned major parts of the processor front end, decode/dispatch logic, execution flow, and memory interface to support more aggressive instruction throughput while preserving correct program behavior.</p>
+      <p class="d-overview">Our final design implemented a two-wide superscalar pipeline capable of fetching, decoding, issuing, executing, and committing up to two instructions per cycle when dependencies and structural hazards allowed. A key feature of our design was an 8-entry Microop Queue in the decode stage, which buffered decoded operations and enabled limited out-of-order dispatch. The queue tracked each micro-op’s PC, opcode, source/destination registers, offset, branch prediction metadata, and whether it came from a split memory operation. This allowed the processor to continue finding useful work even when the fetch/decode stream and execution resources were not perfectly aligned.</p>
+      <p class="d-overview">To support memory instructions, the design decomposed load/store operations into internal micro-ops, using an address-generation operation followed by the actual memory access. Since the load/store unit was constrained to a specific execution slot, the processor included slot-swizzling logic to route memory operations into the correct lane while still allowing compatible non-memory operations to issue alongside them. The issue logic also performed RAW and WAW hazard detection, prevented unsafe dual-issue combinations, handled load stalls, and used forwarding paths from the writeback stage to reduce unnecessary pipeline bubbles.</p>
+      <p class="d-overview">The front end included a parameterized direct-mapped instruction cache, a two-banked Branch Target Buffer, and a 2-bit saturating-counter branch predictor. The instruction fetch stage used these structures to predict up to two candidate instruction addresses, redirect control flow on predicted branches, track outstanding branch predictions, and recover from mispredictions using correction signals from the execute/memory stage. The execute/memory stage handled ALU operations, branch resolution, BTB/predictor updates, memory requests, load completion detection, exception handling, and halt detection.</p>
+      <p class="d-overview">We developed the processor in SystemVerilog, debugged functionality using Verdi waveforms, and synthesized the design to evaluate hardware cost and timing. Using the provided LC2K benchmark programs, we measured CPI, TPI, clock frequency, and area, then explored how these metrics changed as we adjusted architectural parameters such as instruction cache size, BTB size, branch predictor table size, and Microop Queue depth. This project gave us practical experience with superscalar design, branch prediction, instruction scheduling, hazard resolution, forwarding, cache behavior, and the performance/area tradeoffs that drive modern processor microarchitecture.</p>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Photos</div>
+      <div class="d-img-grid">
+        <img src="images/470_cover.png" alt="Superscalar LC2K Processor" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Links & documents</div>
+      <div class="d-link-grid">
+        <a class="d-link-card" href="docs/470_report.pdf" target="_blank">
+          <div class="d-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <span class="d-link-label">PDF</span>
+          <span class="d-link-title">Project Presentation</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top:4rem;">
+    <div class="footer-inner">
+      <span class="footer-name">Minjae Koo</span>
+      <div class="footer-links">
+        <a href="mailto:minjaek@umich.edu">Email</a>
+        <a href="https://www.linkedin.com/in/minjae-koo" target="_blank">LinkedIn</a>
+        <a href="https://github.com/minjae-koo" target="_blank">GitHub</a>
+        <a href="Minjae_Koo_Resume.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+</div><!-- end page-470 -->
 
 <!-- ══════════ DETAIL: RISC-V ══════════ -->
-<div id="page-riscv" class="page">
+<div id="page-427" class="page">
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
@@ -654,9 +724,8 @@
     <div class="detail-eyebrow">EECS 427 — VLSI Design I</div>
     <h2 class="detail-title">16-bit RISC-V Processor</h2>
     <div class="detail-meta">
-      <span>Sep – Dec 2025</span>
+      <span>Sep 2025 – Dec 2025</span>
       <span>Team of 5</span>
-      <span>TSMC 65nm</span>
     </div>
     <div class="detail-chips">
       <span class="detail-chip">Cadence Virtuoso</span>
@@ -721,11 +790,11 @@
       </div>
     </div>
   </footer>
-</div><!-- end page-riscv -->
+</div><!-- end page-427 -->
 
 
 <script>
-  const PAGES = ['page-home', 'page-cim', 'page-riscv'];
+  const PAGES = ['page-home', 'page-598', 'page-427', 'page-470'];
 
   function showHome() {
     PAGES.forEach(id => document.getElementById(id).classList.remove('active'));
@@ -734,7 +803,7 @@
   }
 
   function showProject(id) {
-    const pageId = id === 'cim' ? 'page-cim' : 'page-riscv';
+    const pageId = id === '598' ? 'page-598' : id === '470' ? 'page-470' : 'page-427';
     PAGES.forEach(p => document.getElementById(p).classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
