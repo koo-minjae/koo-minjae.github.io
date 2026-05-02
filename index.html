@@ -435,13 +435,10 @@
         <!-- Photo — replace src with your actual photo path -->
         <div class="hero-photo-wrap">
           <div class="hero-photo">
-            <!-- <img src="images/minjae.jpg" alt="Minjae Koo"> -->
-            <div class="hero-photo-placeholder">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-              <span>Add your photo</span>
-            </div>
+              <img src="images/main_cover.jpg" alt="Minjae Koo">
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -477,9 +474,25 @@
     <div class="container">
       <div class="section-label">Work Experience</div>
       <div class="exp-grid">
-
-        <!-- LG Energy Solution -->
+ 
+        <!-- Nissan Motor Corporation -->
         <div class="exp-item">
+          <div>
+            <div class="exp-content-label">Internship</div>
+            <div class="exp-company">Nissan Motor Corporation</div>
+            <div class="exp-role">R&D Engineering Intern</div>
+            <div class="exp-date">Incoming · Summer 2026</div>
+          </div>
+          <div class="exp-logo-card">
+            <img src="company/logo_nissan.png" alt="Nissan Motor Corporation">
+          </div>
+        </div>
+ 
+        <!-- LG Energy Solution -->
+        <div class="exp-item flip">
+          <div class="exp-logo-card">
+            <img src="company/logo_lg.png" alt="LG Energy Solution">
+          </div>
           <div>
             <div class="exp-content-label">Internship</div>
             <div class="exp-company">LG Energy Solution</div>
@@ -491,36 +504,8 @@
               <li>Gained hands-on understanding of lithium-ion battery cell assembly processes and systems</li>
             </ul>
           </div>
-          <div class="exp-logo-card">
-            <!-- <img src="images/lg-logo.png" alt="LG Energy Solution"> -->
-            <div class="exp-logo-ph">
-              <div class="exp-logo-ph-box"><span>LG</span></div>
-              <div class="exp-logo-ph-label">LG Energy Solution</div>
-            </div>
-          </div>
         </div>
-
-        <!-- Supermileage -->
-        <div class="exp-item flip">
-          <div class="exp-logo-card">
-            <!-- <img src="images/supermileage-logo.png" alt="Supermileage"> -->
-            <div class="exp-logo-ph">
-              <div class="exp-logo-ph-box"><span>SM</span></div>
-              <div class="exp-logo-ph-label">Supermileage Team</div>
-            </div>
-          </div>
-          <div>
-            <div class="exp-content-label">Project Team</div>
-            <div class="exp-company">Supermileage Project Team</div>
-            <div class="exp-role">Power Electronics Subteam Member</div>
-            <div class="exp-date">Oct 2023 – Dec 2024 · Ann Arbor, MI</div>
-            <ul class="exp-bullets">
-              <li>Designed a 2-layer PCB relay driver board with MOSFET low-side switching, verified through thermal checks and oscilloscope measurements</li>
-              <li>Mentored ~10 new members in soldering, oscilloscope use, and Altium workflow</li>
-            </ul>
-          </div>
-        </div>
-
+ 
         <!-- JR Automation -->
         <div class="exp-item">
           <div>
@@ -535,14 +520,10 @@
             </ul>
           </div>
           <div class="exp-logo-card">
-            <!-- <img src="images/jr-logo.png" alt="JR Automation"> -->
-            <div class="exp-logo-ph">
-              <div class="exp-logo-ph-box"><span>JR</span></div>
-              <div class="exp-logo-ph-label">JR Automation</div>
-            </div>
+            <img src="company/logo_jr.png" alt="JR Automation">
           </div>
         </div>
-
+ 
       </div>
     </div>
   </div>
@@ -568,10 +549,10 @@
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <img class="detail-hero-img zoomable" src="images/CIM_cover.png" alt="VLSI Compute-In-Memory ASIC" onclick="openLightbox(this.src, this.alt)">
+    <img class="detail-hero-img zoomable" src="images/CIM_cover.png" alt="Digital Compute-In-Memory ASIC Tapeout" onclick="openLightbox(this.src, this.alt)">
 
     <div class="detail-eyebrow">ECE 598 — VLSI Chip Tapeout Lab</div>
-    <h2 class="detail-title">VLSI Compute-In-Memory ASIC</h2>
+    <h2 class="detail-title">Digital Compute-In-Memory ASIC Tapeout</h2>
     <div class="detail-meta">
       <span>Jan 2026 – Apr 2026</span>
       <span>Team Captain · 5 members</span>
@@ -605,7 +586,7 @@
       <div class="d-section-title">Photos</div>
       <div class="d-img-grid">
         <img src="images/CIM_architecture_diagram.png" alt="CIM Architecture Diagram" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
-        <img src="images/CIM_FSM.png" alt="CIM FSM" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
+        <!-- <img src="images/CIM_FSM.png" alt="CIM FSM" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);"> -->
       </div>
     </div>
 
@@ -691,6 +672,13 @@
         <li>Wrote custom NCVerilog testbenches for functional and corner-case validation</li>
         <li>Performed pre-layout and post-layout SPICE simulations to verify timing and correctness with extracted parasitics</li>
       </ul>
+    </div>
+
+    <div class="d-section">
+      <div class="d-section-title">Photos</div>
+      <div class="d-img-grid">
+        <img src="images/427_layout.png" alt="16-bit RISC-V Processor Layout" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
+      </div>
     </div>
 
     <div class="d-section">
