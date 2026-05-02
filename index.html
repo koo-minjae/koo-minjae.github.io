@@ -339,6 +339,41 @@
     .d-link-icon svg { width: 14px; height: 14px; stroke: var(--blue-mid); fill: none; stroke-width: 1.5; }
     .d-link-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
     .d-link-title { font-size: 13px; font-weight: 600; color: var(--blue); }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      backdrop-filter: blur(4px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      font-size: 28px; color: rgba(255,255,255,0.7);
+      cursor: pointer; line-height: 1;
+      background: none; border: none;
+      transition: color 0.15s;
+    }
+    .lightbox-close:hover { color: #fff; }
+    .zoomable {
+      cursor: zoom-in;
+      transition: opacity 0.15s;
+    }
+    .zoomable:hover { opacity: 0.9; }
   </style>
 </head>
 <body>
@@ -533,7 +568,7 @@
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <img class="detail-hero-img" src="images/CIM_cover.png" alt="VLSI Compute-In-Memory ASIC">
+    <img class="detail-hero-img zoomable" src="images/CIM_cover.png" alt="VLSI Compute-In-Memory ASIC" onclick="openLightbox(this.src, this.alt)">
 
     <div class="detail-eyebrow">ECE 598 — VLSI Chip Tapeout Lab</div>
     <h2 class="detail-title">VLSI Compute-In-Memory ASIC</h2>
@@ -569,8 +604,8 @@
     <div class="d-section">
       <div class="d-section-title">Photos</div>
       <div class="d-img-grid">
-        <img src="images/CIM_architecture_diagram.png" alt="CIM Architecture Diagram" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
-        <img src="images/CIM_FSM.png" alt="CIM FSM" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
+        <img src="images/CIM_architecture_diagram.png" alt="CIM Architecture Diagram" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
+        <img src="images/CIM_FSM.png" alt="CIM FSM" class="zoomable" onclick="openLightbox(this.src, this.alt)" style="width:100%;border-radius:10px;object-fit:contain;background:var(--surface);">
       </div>
     </div>
 
@@ -625,7 +660,7 @@
   <div class="detail-container">
     <button class="detail-back" onclick="showHome()">← All projects</button>
 
-    <img class="detail-hero-img" src="images/427_cover.png" alt="16-bit RISC-V Processor">
+    <img class="detail-hero-img zoomable" src="images/427_cover.png" alt="16-bit RISC-V Processor" onclick="openLightbox(this.src, this.alt)">
 
     <div class="detail-eyebrow">EECS 427 — VLSI Design I</div>
     <h2 class="detail-title">16-bit RISC-V Processor</h2>
@@ -707,6 +742,30 @@
     document.getElementById(pageId).classList.add('active');
     window.scrollTo(0, 0);
   }
+
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 </body>
 </html>
